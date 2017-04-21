@@ -1,0 +1,51 @@
+/*reset*/
+*{
+  margin: 0;
+  padding: 0;
+}
+h1{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 40px;
+  color: gainsboro;
+}
+p{
+  padding-top: 120px;
+  margin-left: 20px;
+  color: white;
+}
+ul{
+  margin-top: 40px;
+  margin-left: 40px;
+  color: royalblue;
+}
+a{
+  margin: 20px;
+  color: palevioletred;
+}
+table{
+  margin-left: 40px;
+  margin: 20px;
+  background-color: white;
+}
+footer{
+  background-color: gray;
+  display: inline-block;
+}
+footer h2{
+  color: gainsboro;
+  margin-left: 40px;
+  margin: 20px;
+}
+footer h3{
+  margin-left: 40px;
+  margin: 20px;
+}
+#seasons{
+  margin-left: 20px;
+  color: darkblue'
+}
+label{
+  margin-left: 20px;
+  color: skyblue;
+}

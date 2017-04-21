@@ -1,217 +1,253 @@
 /*RESET*/
-*{
-  margin: 0;
-  padding: 0;
+
+* {
+    margin: 0;
+    padding: 0;
 }
-header{
-  width: 1040px;
-  margin-left: 16%;
-  height: 188px;
-  display: block;
+
+header {
+    width: 1040px;
+    margin-left: 16%;
+    height: 188px;
+    display: block;
 }
-header h1{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 45pt;
-  font-weight: normal;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 20px;
-  margin-left: 140px;
+
+header h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 45pt;
+    font-weight: normal;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+    margin-left: 140px;
 }
-header h1 span{
-  color: #28679D;
+
+header h1 span {
+    color: #28679D;
 }
-header img{
-  width: 9%;
-  z-index: 999999;
-  position: absolute;
+
+header img {
+    width: 9%;
+    z-index: 999999;
+    position: absolute;
 }
-header #banner{
-  height: 40px;
-  background: linear-gradient(#29689C, #4D7FA9, #29689C);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 30pt;
-  font-weight: normal;
-  color: white;
-  padding: 20px;
-  padding-left: 25px;
-  z-index: 999998;
-  margin-top: 20px;
+
+header #banner {
+    height: 40px;
+    background: linear-gradient(#29689C, #4D7FA9, #29689C);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30pt;
+    font-weight: normal;
+    color: white;
+    padding: 20px;
+    padding-left: 25px;
+    z-index: 999998;
+    margin-top: 20px;
 }
-.wrapper{
-  width: 1040px;
-  margin-left: 16%;
-  background: linear-gradient(#E2E2E2, white 30%);
+
+.wrapper {
+    width: 1040px;
+    margin-left: 16%;
+    background: linear-gradient(#E2E2E2, white 30%);
 }
-.leftpanel{
-  width: 23%;
-  padding-top: 20px;
-  padding-left: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  display: inline-block;
+
+.leftpanel {
+    width: 23%;
+    padding-top: 20px;
+    padding-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: inline-block;
 }
-.leftpanel #large{
-  font-size: 15pt;
+
+.leftpanel #large {
+    font-size: 15pt;
 }
-.leftpanel p span{
-  color: #25659B;
+
+.leftpanel p span {
+    color: #25659B;
 }
-#large span{
-  color: #D62626;
+
+#large span {
+    color: #D62626;
 }
-#videobut{
-  width: 100%;
-  height: 40px;
-  color: white;
-  font-size: 15pt;
-  margin-top: 20px;
-  background: linear-gradient(#6498C1, #2D6CA1);
-  border-radius: 5px;
+
+#videobut {
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-size: 15pt;
+    margin-top: 20px;
+    background: linear-gradient(#6498C1, #2D6CA1);
+    border-radius: 5px;
 }
-#morebutt{
-  width: 100%;
-  height: 40px;
-  color: white;
-  font-size: 15pt;
-  margin-top: 5px;
-  background: linear-gradient(#E9A857, #F76F00);
-  border-radius: 5px;
+
+#morebutt {
+    width: 100%;
+    height: 40px;
+    color: white;
+    font-size: 15pt;
+    margin-top: 5px;
+    background: linear-gradient(#E9A857, #F76F00);
+    border-radius: 5px;
 }
-hr{
-  margin-top: 20px;
+
+hr {
+    margin-top: 20px;
 }
-.imagediv{
-  height: 275px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: lighter;
-  font-size: 20pt;
-  color: white;
-  text-align: center;
-  margin-top: 20px;
-  padding-top: 25px;
-  padding-bottom: 35px;
-  background-image: url("images/ad_background.png");
-  box-shadow: 3px 3px gray;
+
+.imagediv {
+    height: 275px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 20pt;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 25px;
+    padding-bottom: 35px;
+    background-image: url("/Users/HKN/DoJoAssignments/WebFundamentals/HTML/images/ad_background.png");
+    box-shadow: 3px 3px gray;
 }
-.imagediv img{
-  width: 40%;
-  vertical-align: middle;
-  display: block;
-  padding-left: 28%
+
+.imagediv img {
+    width: 40%;
+    vertical-align: middle;
+    display: block;
+    padding-left: 28%
 }
-.imagediv #learnbut{
-  width: calc(100% - 40px);
-  height: 40px;
-  color: white;
-  font-size: 15pt;
-  margin-top: 20px;
-  background: linear-gradient(#89DDE8, #04BEDA);
-  border-radius: 5px;
-  text-align: center;
+
+.imagediv #learnbut {
+    width: calc(100% - 40px);
+    height: 40px;
+    color: white;
+    font-size: 15pt;
+    margin-top: 20px;
+    background: linear-gradient(#89DDE8, #04BEDA);
+    border-radius: 5px;
+    text-align: center;
 }
-.rightpanel{
-  width: 74%;
-  padding-top: 3px;
-  margin-left: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-  display: inline-block;
-  vertical-align: top;
+
+.rightpanel {
+    width: 74%;
+    padding-top: 3px;
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    display: inline-block;
+    vertical-align: top;
 }
-.rheader{
-  display: inline-block;
-  width: 75%;
-  padding-top: 3px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-  vertical-align: top;
+
+.rheader {
+    display: inline-block;
+    width: 75%;
+    padding-top: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    vertical-align: top;
 }
-.rheader #home{
-  width: 4%;
-  display: inline-block;
-  vertical-align: top;
-  padding-top: 5px;
+
+.rheader #home {
+    width: 4%;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
 }
-.rheader #phone{
-  width: 10%;
-  display: inline-block;
-  margin-left: 78%;
-  padding-top: 5px;
-  vertical-align: bottom;
+
+.rheader #phone {
+    width: 10%;
+    display: inline-block;
+    margin-left: 78%;
+    padding-top: 5px;
+    vertical-align: bottom;
 }
-#dns{
-  display: inline-block;
-  vertical-align: top;
-  padding-top: 8px;
-  color: #2B699D;
+
+#dns {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 8px;
+    color: #2B699D;
 }
-.hours{
-  width: 23%;
-  /*padding-top: 3px;*/
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-  display: inline-block;
-  vertical-align: top;
+
+.hours {
+    width: 23%;
+    /*padding-top: 3px;*/
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    display: inline-block;
+    vertical-align: top;
 }
-.hours p{
-  font-size: 8pt;
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 5px;
+
+.hours p {
+    font-size: 8pt;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
 }
-.hours a{
-  color: #03C0DD;
-  font-size: 16pt;
-  font-weight: bold;
-  display: inline-block;
-  vertical-align: top;
+
+.hours a {
+    color: #03C0DD;
+    font-size: 16pt;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: top;
 }
-.content h2{
-  margin-top: 5px;
-  color: #1E6198;
+
+.content h2 {
+    margin-top: 5px;
+    color: #1E6198;
 }
-.content p{
-  margin-top: 5px;
+
+.content p {
+    margin-top: 5px;
 }
-.content span{
-  color: #4FB5C4;
+
+.content span {
+    color: #4FB5C4;
 }
-.content ul li{
-  margin-top: 10px;
-  margin-left: 40px;
+
+.content ul li {
+    margin-top: 10px;
+    margin-left: 40px;
 }
-.content ol li{
-  margin-top: 10px;
-  margin-left: 40px;
+
+.content ol li {
+    margin-top: 10px;
+    margin-left: 40px;
 }
-.content ul li::first-word{
-  color: #4FB5C4;
+
+.content ul li::first-word {
+    color: #4FB5C4;
 }
-.content img{
-  width: 40%;
-  padding-left: 28%;
-  margin-top: 20px;
+
+.content img {
+    width: 40%;
+    padding-left: 28%;
+    margin-top: 20px;
 }
-.bigthree{
-  margin-top: 20px;
-  border-top: 5px solid #0087DD;
-  border-right: 5px solid #0087DD;
-  border-left: 5px solid #0087DD;
+
+.bigthree {
+    margin-top: 20px;
+    border-top: 5px solid #0087DD;
+    border-right: 5px solid #0087DD;
+    border-left: 5px solid #0087DD;
 }
-.bigthree img{
-  width: 20%;
-  display: inline-block;
-  padding: 0;
-  margin: 15px;
+
+.bigthree img {
+    width: 20%;
+    display: inline-block;
+    padding: 0;
+    margin: 15px;
 }
-.bottompic{
-  width: 75%;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 15px;
+
+.bottompic {
+    width: 75%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 15px;
 }
-.bottompic #now{
-  display: inline-block;
+
+.bottompic #now {
+    display: inline-block;
 }
