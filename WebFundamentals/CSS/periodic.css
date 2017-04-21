@@ -1,0 +1,103 @@
+/*RESET*/
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+p{
+  margin-top: 2px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  text-align: center;
+  font-size: 10px;
+}
+span{
+  font-size: 15pt;
+  display: block;
+  text-align: center;
+  color: #1913A2;
+}
+#blank{
+  vertical-align: top;
+  border: 2px solid white;
+  background-color: white;
+}
+#row{
+  width: 50px;
+  height: 30px;
+  vertical-align: top;
+  border: none;
+  background-color: white;
+  color: red;
+  margin-left: 4px;
+  margin-top: 5px;
+  padding-top: 5px;
+  font-size: 10pt;
+}
+#column{
+  vertical-align: top;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: white;
+  color: red;
+  margin-top: 2px;
+  font-size: 10pt;
+}
+#key{
+  vertical-align: top;
+  width: 150px;
+  height: 50px;
+  border: none;
+  background-color: white;
+  color: red;
+  margin-top: 2px;
+  font-size: 10pt;
+}
+.alkalimetals p{
+  background-color: #689BFF;
+}
+.transmetals p{
+  background-color: #FD9A98;
+}
+.nonemetals p{
+  background-color: #FECB00;
+}
+.nidesnoids p {
+  background-color: #1FCA21;
+}
+.alkalimetals{
+  width: 171px;
+  max-height: 532px;
+  margin-top: 15px;
+  /*margin-left: 58px;*/
+  margin-right: 5px;
+  display: inline-block;
+}
+.transmetals{
+  width: 580px;
+  max-height: 532px;
+  margin-top: 183px;
+  margin-right: 0px;
+  margin-bottom: 35px;
+  display: inline-block;
+  vertical-align: top;
+}
+.nonemetals{
+  width: 394px;
+  max-height: 532px;
+  margin-top: 15px;
+  display: inline-block;
+  vertical-align: top;
+}
+.nidesnoids{
+  width: 976px;
+  max-height: 532px;
+  margin-left: 22px;
+  display: inline-block;
+  vertical-align: top;
+}

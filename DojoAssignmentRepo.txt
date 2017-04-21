@@ -1,0 +1,14 @@
+Created a new repository on GitHub using + "New Repository" option
+then navigated to DojoAssignments folder using the cd command
+issued git init
+git add .
+git commit -m "adding intial files"
+copied commands from GITHUB:
+	git remote add origin https://github.com/hkneal/DojoAssignments.git
+	git push -u origin master
+	(entered username and password)
+touch readme.md
+nano readme.md
+git add readme.md
+git commit -m "adding readme.md"
+git push -u origin master

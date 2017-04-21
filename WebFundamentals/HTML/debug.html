@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>learning commands</title>
+    <script type="text/javascript">
+    "use strict";
+    function printArray(inputArr, reversedFlag){
+      if(reversedFlag){
+        for(var i=inputArr.length-1; i>=0; i--){
+          console.log(i + " -> " + inputArr[i]);
+        }
+      } else {
+        for(var i=0; i<inputArr.length; i++){
+          console.log(i + " -> " + inputArr[i]);
+        }
+      }
+    }
+
+    printArray(["James","Jill","Jane","Jack"], false);
+    console.log("============");
+    printArray(["James","Jill","Jane","Jack"], true);
+    console.log("============");
+    printArray(["=>","<-","::","------"], false);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

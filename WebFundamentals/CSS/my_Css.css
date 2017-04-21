@@ -1,0 +1,122 @@
+/*reset*/
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: radial-gradient(circle, blue 10%, green, silver);
+}
+main{
+  margin: 0 auto;
+  width: 940px;
+  height: 100%;
+  background-color: ivory;
+  border-left: double green;
+  border-right: double green;
+  padding: 10px;
+  padding-top: 110px;
+}
+h1{
+  display: inline-block;
+  /*position: absolute;*/
+  /*bottom:0;*/
+  width: calc(83% - 25px);
+  vertical-align: middle;
+  font-size: 240%;
+}
+header{
+  width: 970px;
+  height:90px;
+  padding: 10px;
+  padding-left: calc(18% - 5px);
+  padding-right: 25%;
+  /*padding-left: 290px;*/
+  background-color: ivory;
+  position: fixed;
+  top: 0;
+  border-bottom: green double 2px;
+}
+span{
+  color: blue;
+  font-size: 50%;
+}
+.img-circle{
+  height: 80px;
+  width: 80px;
+  display: inline-block;
+  /*float: right;*/
+  border: 3px double green;
+  border-radius: 50%;
+  /*border-color: green;*/
+  margin-left: : 450px;
+}
+main img{
+  width: 60%;
+  height: auto;
+}
+main article{
+  display: inline-block;
+  width: 35%;
+  vertical-align: top;
+  padding: 10px;
+}
+article p::first-letter{
+  float: left;
+  font-size: 230%;
+  color: green;
+  margin-right: 5px;
+}
+main h2, main p{
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+article.project {
+   width: 30%;
+   margin: 0 auto;
+ }
+table{
+  margin-left: 20%;
+  display: inline-block;
+}
+table tbody>tr:nth-child(odd){
+  background-color: rgb(144,238,144);
+}
+table td{
+  text-align: center;
+}
+form{
+  display: inline-block;
+  vertical-align: top;
+  width: 240px;
+  margin-left: 5%;
+}
+form label, input{
+  display: inline-block;
+  width: 100%;
+  margin: 5px 0;
+}
+form input[type='submit']{
+  width: 60px;
+  display:inline-block;
+  margin-left: 90px;
+}
+main section h3{
+  color: green;
+}
+footer{
+  color: green;
+}
+footer nav{
+  width: 300px;
+  margin-left: 345px;
+  display: inline-block;
+}
+footer a{
+  text-decoration: none;
+  color: green;
+  padding: 0 10px;
+}
+footer a+a{
+  border-left: solid 2px green;
+}
