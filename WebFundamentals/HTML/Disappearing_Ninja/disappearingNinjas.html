@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang"en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Disappearing Ninjas Learning Exercise</title>
+    <link rel="stylesheet" type="text/css" href="CSS/ninjas.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+     crossorigin="anonymous"></script>
+     <script>
+     console.log($());
+     $(document).ready(function(){
+       console.log("Done loading JQuery");
+     });
+     </script>
+  </head>
+  <body>
+    <h1>JQuery Disappearing Ninja Assignment:</h1>
+    <img src="images/troopers.jpg" alt="">
+    <img src="images/troopers.jpg" alt="">
+    <img src="images/troopers.jpg" alt="">
+    <img src="images/troopers.jpg" alt="">
+    <img src="images/troopers.jpg" alt="">
+    <img src="images/troopers.jpg" alt="">
+    <button type="button" name="button">RESET</button>
+    <script>
+    $("img").click(function(){
+      $(this).hide(100);
+    })
+    $("button").click(function(){
+      $("img").show();
+    });
+    </script>
+  </body>
+</html>

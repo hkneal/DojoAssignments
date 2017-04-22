@@ -13,12 +13,21 @@
       console.log("Done loading JQuery");
     });
     </script>
+    <style>
+      .header{
+        background-color: lightsteelblue;
+      }
+      .htmlAdd{
+        background-color: white;
+      }
+    </style>
   </head>
   <body>
-    <header>
+    <header background-color="lightsteelblue";>
       <form class="" action="index.html" method="post">
         <input class="arrow" type="image" src="images/leftArrow.png" alt="Submit">
         <input class="arrow" type="image" src="images/rightArrow.png" alt="Submit">
+        <image id="fade" src="images/fade.png">
         <h1>My JQuery Basics Assignment!</h1>
         <input id="readMe" type="image" src="images/readme.png" alt="Submit">
         <input id="search" type="text" name="" value="Search">
@@ -46,7 +55,11 @@
       <h1>Show</h1>
       <p>Click the button to Show all of the H1 Tags</p>
     </div>
+    <div class="htmlAdd">
+
+    </div>
     <button id="slideD" type="button" name="button">Click Me!!</button>
+    <button id="slideU" type="button" name="button">No Click Me!!</button>
     <img id="snack" src="images/snack.jpg" alt="">
     <footer>
       <a href="http://www.jquery.com">JQuery Website &#8594;</a>
@@ -59,6 +72,9 @@
     $("#show").click(function(){
       $("h1").show();
     });
+    $("#addClass").click(function(){
+      $("p").addClass("red");
+    });
     $("#slide").click(function(){
       $("#slideimg").slideToggle();
       $("#slidep").toggle();
@@ -67,9 +83,33 @@
       if($("#snack").is(":hidden")) {
         $("#snack").slideDown("slow");
       } else {
-        $("#snack").hide();
+        $("#snack").hide("slow");
       }
     });
+    $("#slideU").click(function(){
+      $("div").slideUp(5000, function(){
+        $("div").slideDown("slow");
+      });
+    });
+    $("#fade").click(function(){
+      $("body").fadeOut(5000, function(){
+        $("body").fadeIn(5000);
+      });
+    });
+    $("hr").before("<hr>");
+    $("div").after("<hr>");
+    $("#append").click(function(){
+      $("p").append("!");
+    });
+    $(".htmlAdd").html("<b>We Added This in with a JQuery .HTML() Function!<b>");
+    $("#append").click(function(){
+      var attribute = $("header").attr("background-color");
+      $("p").append("  The color of the Header is " + attribute);
+    });
+    var searched = $("#search").val("value");
+    console.log(searched);
+    var str = $( "p:first" ).text();
+    $( ".htmlAdd" ).append( str );
     </script>
   </body>
 </html>
