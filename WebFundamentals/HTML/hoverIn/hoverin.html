@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Hover in/out, learning hoover jQuery</title>
+    <link rel="stylesheet" type="text/css" href="CSS/hover.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      console.log($());
+      $(document).ready(function(){
+        console.log("JQuery is done loading");
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Hover In and Out JQuery</h1>
+    <img src="images/Navigator-exterior.jpg" alt="images/Navigator.jpg">
+    <img src="images/0.png" alt="images/2.png">
+    <img src="images/special.jpg" alt="images/centenario.jpg">
+    <img src="images/fintgrau-mclaren-p1.jpg" alt="images/2014-mclaren-p1-64_800x0w.jpg">
+    <script>
+    $("img").hover(function(){
+      var newimage = $(this).attr("alt");
+      var oldimage = $(this).attr("src");
+      $(this).attr("src", newimage);
+      $(this).attr("alt", oldimage);
+    }, function(){
+      var newimage = $(this).attr("alt");
+      var oldimage = $(this).attr("src");
+      $(this).attr("src", newimage);
+      $(this).attr("alt", oldimage);
+    });
+    </script>
+  </body>
+</html>
