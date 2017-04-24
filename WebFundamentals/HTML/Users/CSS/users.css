@@ -1,0 +1,44 @@
+/*  RESET  */
+*{
+  margin: 0;
+  padding: 0;
+}
+table{
+  margin: 20px;
+  border-collapse: collapse;
+}
+th{
+  background-color: skyblue;
+}
+table, tr{
+  border: 1px solid black;
+}
+table tr th{
+  white-space: pre;
+}
+tr{
+  border: 3px solid black;
+}
+.inputfield{
+  width: 300px;
+  text-align: right;
+}
+h1{
+  width: 294px;
+  margin: 20px;
+  margin-left: 5px;
+  text-decoration: underline;
+  white-space: pre;
+}
+label{
+  display: inline-block;
+  margin: 5px;
+}
+#submit, #reset{
+  margin-top: 40px;
+  margin-left: 5px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: 5px solid gray;
+  background-color: grey;
+}

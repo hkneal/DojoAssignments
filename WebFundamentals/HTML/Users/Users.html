@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Users learning exercise</title>
+    <link rel="stylesheet" type="text/css" href="CSS/users.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      console.log($());
+      $(document).ready(function(){
+        console.log("JQuery is done loading");
+        $("form").submit(function(){
+          return false;
+        });
+        $("#submit").click(function(){
+          var fname = $("input#first_name").val();
+          var lname = $("input#last_name").val();
+          var email = $("input#email_address").val();
+          var contact = $("input#contact_no").val();
+          $("table").append("<tr><td>" + fname + "</td><td>" + lname + "</td><td>" + email + "</td><td>" + contact + "</td></tr>");
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>FirstName                </th>
+        <th>LastName               </th>
+        <th>EmailAddress               </th>
+        <th>Contact#               </th>
+      </tr>
+    </table>
+    <div class="inputfield">
+      <h1>Add User            </h1>
+      <form class="userform" action="index.html" method="post">
+        <label for="first_name">First Name:</label>
+        <input id="first_name" type="text" name="first_name" value="First Name">
+        <label for="last_name">Last Name:</label>
+        <input id="last_name" type="text" name="last_name" value="Last Name">
+        <label for="email_address">Email Address:</label>
+        <input id="email_address" type="text" name="email_address" value="Email Address">
+        <label for="contact_no">Contact No.:</label>
+        <input id="contact_no"type="text" name="contact_no" value="Phone #">
+        <input id="submit" type="submit" value="Add User">
+        <input id="reset" type="reset" name="" value="Reset">
+      </form>
+    </div>
+  </body>
+</html>
