@@ -1,0 +1,84 @@
+/*RESET*/
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: url("images/Contact-connect.jpg");
+  background-repeat: no-repeat;
+}
+header{
+  padding-top: 20px;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(darkblue, black);
+  text-align: center;
+  color: white;
+}
+.inputfield{
+  width: 299px;
+  text-align: right;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px solid lightslategrey;
+  margin: 20px;
+  margin-top: 40px;
+  vertical-align: top;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.inputfield h1{
+  width: 294px;
+  margin: 40px;
+  margin-left: 5px;
+  text-decoration: underline;
+  white-space: pre;
+}
+label{
+  display: inline-block;
+  margin: 5px;
+}
+#submit, #reset{
+  margin-top: 40px;
+  margin-left: 5px;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: 5px solid gray;
+  background-color: grey;
+}
+.contactCard{
+  display: inline-block;
+  margin: 40px;
+  margin-left: 140px;
+  width: 580px;
+  height: 620px;
+  vertical-align: top;
+  background-color: gainsboro;
+  border: 3px solid lightslategray;
+  border-radius: 10px;
+}
+.newcon{
+  width: 95%;
+  border: 3px solid black;
+  border-radius: 10px;
+  background: url("images/Paper-scrap_2.jpg");
+  /*background-color: white;*/
+  box-shadow: 2px 2px 2px lightgrey;
+  color: darkslategray;
+  display: block;
+  margin: 5px;
+  text-align: center;
+}
+#pclick{
+text-align: center;
+color: blue;
+}
+#pdesc{
+  display: none;
+}
+#description{
+  vertical-align: top;
+  height: 60px;
+}

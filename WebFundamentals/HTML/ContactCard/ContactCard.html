@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Card learning exercise</title>
+    <link rel="stylesheet" type="text/css" href="CSS/contactCard.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      console.log($());
+      $(document).ready(function(){
+        console.log("JQuery is done loading");
+        $("form").submit(function(){
+          return false;
+        });
+        $("#submit").click(function(){
+          var fname = $("input#first_name").val();
+          var lname = $("input#last_name").val();
+          var descr = $("input#description").val();
+          $(".contactCard").append("<div class='newcon'><h1>" + fname + " " + lname + "</h1><p id='pclick'>Click for a description</p><p id='pdesc'>" + descr + "</p></div>");
+          })
+          $(".newcon").click(function(){
+            $("p").toggle();
+            $(".newcon h1").toggle();
+          })
+          $(document).on('click', '.newcon', function(){
+            $("p").toggle();
+            $(".newcon h1").toggle();
+            console.log("Docon was executed");
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Coding Dojo Contact Page</h1>
+    </header>
+    <div class="inputfield">
+      <h1>Enter User Info      </h1>
+      <form class="userform" action="index.html" method="post">
+        <label for="first_name">First Name:</label>
+        <input id="first_name" type="text" name="first_name" value="">
+        <label for="last_name">Last Name:</label>
+        <input id="last_name" type="text" name="last_name" value="">
+        <label for="description">Description:</label>
+        <input id="description" type="text" name="description" value="Enter Description:">
+        <input id="submit" type="submit" value="Add User">
+        <input id="reset" type="reset" name="" value="Reset">
+      </form>
+    </div>
+    <div class="contactCard">
+
+    </div>
+  </body>
+</html>
