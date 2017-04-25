@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App, learning exercise</title>
+    <link rel="stylesheet" type="text/css" href="CSS/weather.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      console.log($());
+      function fToCelsius(fDegrees){
+        var cDegrees = ((fDegrees - 32) / (9/5) );
+        return cDegrees;
+      }
+      $(document).ready(function(){
+        console.log("JQuery is done loading");
+      $("form").submit(function(){
+        return false;
+      });
+      $("#submit").click(function(){
+        var cityName = $("input").val();
+        var applid = "&appid=c4922202c27e63e5dc93bd0bab6b8b2f";
+        $.get("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + applid, function(info){
+          var temp = info.main.temp;
+          temp = fToCelsius(temp);
+        $(".result").html("<h1>" + info.name + "</h1>");
+        $(".result").append("<p>Temperature: " + temp + "</p>");
+        }, 'json');
+      });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Assignment: Your Very Own Weather Forecast App!</h1>
+    <form class="" action="index.html" method="post">
+      <input type="text" name="location" value="">
+      <button id="submit" type="submit" name="button">Search Weather</button>
+      <!-- <button id="submit" type="submit" value="Search Weather" style="font-size : 50px" /> -->
+    </form>
+    <div class="result">
+
+    </div>
+  </body>
+</html>

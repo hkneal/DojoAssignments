@@ -1,0 +1,31 @@
+/*RESET*/
+*{
+  margin: 0;
+  padding: 0;
+}
+h1{
+  font-family: courier, monospace, sans-serif;
+  font-weight: bold;
+  margin: 15px;
+}
+input{
+  margin: 20px;
+  margin-right: 3px;
+  font-family: sans-serif;
+  font-size: 20pt;
+}
+p{
+  margin: 20px;
+}
+.result{
+  width: 50%;
+  margin: 20px;
+}
+#submit{
+  height: 5%;
+  margin-left: 3px;
+  font-size: 25px;
+  background: white;
+  border-radius: 10px;
+  padding: 5px;
+}
