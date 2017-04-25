@@ -9,9 +9,9 @@
     crossorigin="anonymous"></script>
     <script>
       console.log($());
-      function fToCelsius(fDegrees){
-        var cDegrees = ((fDegrees - 32) / (9/5) );
-        return cDegrees;
+      function kToFahernheit(kDegrees){
+        var fDegrees = Math.round(((9/5)*(kDegrees - 273)) + 32 );
+        return fDegrees;
       }
       $(document).ready(function(){
         console.log("JQuery is done loading");
@@ -23,9 +23,10 @@
         var applid = "&appid=c4922202c27e63e5dc93bd0bab6b8b2f";
         $.get("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + applid, function(info){
           var temp = info.main.temp;
-          temp = fToCelsius(temp);
+          temp = kToFahernheit(temp);
         $(".result").html("<h1>" + info.name + "</h1>");
         $(".result").append("<p>Temperature: " + temp + "</p>");
+        console.log(info);
         }, 'json');
       });
       });
