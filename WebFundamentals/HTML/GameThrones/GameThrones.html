@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Game of Thrones API learning exercise</title>
+    <link rel="stylesheet" type="text/css" href="CSS/gameOfthrones.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      console.log($());
+      $(document).ready(function(){
+        console.log("JQuery is done loading");
+        $("img").click(function(){
+          var house = $(this).attr("id");
+          if(house == "targaryen") house = "378";
+          if(house == "baratheon") house = "17";
+          if(house == "lannister") house = "229";
+          if(house == "stark") house = "362";
+          $.get("https://anapioficeandfire.com/api/houses/" + house,function(info){
+            $(".details").html("<p>Name: " + info.name + "</p>");
+            $(".details").append("<p>Words: " + info.words + "</p>");
+            var titles = "";
+            for(var i=0; i<info.titles.length; i++){
+              if(i == info.titles.length-1){
+                titles += info.titles[i];
+              } else titles += info.titles[i] + ", ";
+            }
+            $(".details").append("<p>Titles: " + titles + "</p>");
+          },'json');
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <img id="stark" src="images/gameofthrones/stark.jpg" alt="">
+    <img id="targaryen" src="images/gameofthrones/targaryen.jpg" alt="">
+    <img id="lannister" src="images/gameofthrones/lannister.jpg" alt="">
+    <img id="baratheon" src="images/gameofthrones/baratheon.png" alt="">
+    <h1 id="housep">House Details</h1>
+    <div class="details">
+
+    </div>
+  </body>
+</html>
