@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemon learning APIs</title>
+    <link rel="stylesheet" type="text/css" href="CSS/pokemon.css">
+    <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      console.log($());
+      $(document).ready(function(){
+        console.log("JQuery is done loading");
+      for(var i=1; i<=151; i++){
+        $("body").append("<img src='http://pokeapi.co/media/img/" + i + ".png'>");
+      }
+      });
+    </script>
+  </head>
+  <h1>Assignment: Pokemon</h1>
+  <body>
+  </body>
+</html>

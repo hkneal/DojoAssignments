@@ -1,0 +1,49 @@
+/*RESET*/
+*{
+  margin: 0;
+  padding: 0;
+}
+h1{
+  font-family: courier, monospace, sans-serif;
+  font-weight: bold;
+  margin: 15px;
+}
+img{
+  margin: 15px;
+}
+.images{
+  width: 67%;
+  display: inline-block;
+}
+.info{
+  width: 250px;
+  height: 500px;
+  border: 30px solid red;
+  border-bottom: 60px solid red;
+  display: inline-block;
+  vertical-align: top;
+  position: fixed;
+  text-align: center;
+}
+.info h1{
+  text-align: center;
+  margin: 10px;
+  margin-top: 20px;
+}
+.info p{
+  text-align: left;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.info ul{
+  text-align: left;
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+#num{
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: normal;
+}
