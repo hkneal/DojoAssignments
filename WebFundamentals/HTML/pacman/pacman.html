@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Pacman learning exercise</title>
+    <!-- <script   src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script>
+      console.log($());
+      $(document).ready(function(){
+        console.log("JQuery is done loading");
+
+      });
+    </script> -->
+    <style type="text/css">
+      h1{
+        margin-top: 30px;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+      div.headline{
+        font-family: impact;
+        color: yellow;
+        text-align: center;
+        font-size: 30pt;
+      }
+      .headline p{
+        display: inline-block;
+        font-family: impact;
+        color: blue;
+        font-size: 22pt;
+        margin-left: 80px;
+        margin-bottom: 12px;
+      }
+      body{
+        background: black;
+        margin: 0;
+        padding: 0;
+      }
+      div.row div{
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+      }
+      div.brick{
+      background-color: blue;
+      /*border-radius: 5px;*/
+      }
+      div.empty{
+
+      }
+      div.coin{
+        background: url("images/kingpoker_sng.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #score{
+        width: 100px;
+        height: 50px;
+        display: inline-block;
+        border-radius: 10px;
+        margin-right: 300px;
+        color: ivory;
+        font-family: andale, monospace;
+        vertical-align: top;
+        margin-top: 75px;
+      }
+      #pacman{
+        background: url("images/pacman.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+      }
+      #pinky{
+        background: url("images/pinky.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+      }
+      #blinky{
+        background: url("images/blinky.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+      }
+      #inky{
+        background: url("images/inky.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+      }
+      #clyde{
+        background: url("images/clyde.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+      }
+      .cherries{
+        background: url("images/cherry.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+      }
+      div.world{
+        /*position: fixed;*/
+      }
+      #lives{
+        width: 300px;
+        height: 30px;
+        display: inline-block;
+        margin: 5px;
+      }
+      #lives img{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+      }
+      #lives h1{
+        color: ivory;
+        font-family: andale, monospace;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="headline">
+      <h1>PACMAN</h1>
+      <p>Your Score is:</p>
+      <div id="score">00</div>
+    </div>
+    <div class="container">
+      <div id="pacman"></div>
+      <div id="pinky"></div>
+      <div id="blinky"></div>
+      <div id="inky"></div>
+      <div id="clyde"></div>
+      <div id="world"></div>
+      <div id="lives"><h1>Lives: </h1></div>
+    </div>
+    <audio id="chomp" src="music/pacman_chomp.wav"></audio>
+    <audio id="cherry" src="music/pacman_eatfruit.wav"></audio>
+    <audio id="death" src="music/pacman_death.wav"></audio>
+    <audio id="eatghost" src="music/pacman_eatghost.wav"></audio>
+    <audio id="extra" src="music/pacman_extrapac.wav"></audio>
+    <audio id="newlevel" src="music/pacman_intermission.wav"></audio>
+
+    <script type="text/javascript">
+
+      var pacman = {
+        x:23,
+        y:15
+      };
+      var pinky = {
+        name: "pinky",
+        x:22,
+        y:9
+      };
+      var blinky = {
+        name: "blinky",
+        x:24,
+        y:9
+      };
+      var inky = {
+        name: "inky",
+        x:22,
+        y:11
+      };
+      var clyde = {
+        name: "clyde",
+        x:24,
+        y:11
+      };
+
+      var ghosts = [pinky,blinky,inky,clyde];
+      var score = 00;
+      var lives = 3;
+      var timerStarted = cherryOut = ghostMoving = false;
+      var starting = true;
+      var world = [
+          [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+          [2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2],
+          [2,1,1,2,1,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,1,2,1,1,2],
+          [2,1,1,2,1,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,1,2,1,1,2],
+          [2,2,2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,2,2,2],
+          [2,1,1,1,1,1,1,1,2,2,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,1,2,2,1,1,1,1,1,1,1,2],
+          [2,1,2,1,2,2,2,1,2,2,1,2,0,0,0,0,0,0,0,2,1,2,2,2,2,2,1,2,0,0,0,0,0,0,0,2,1,2,2,1,2,2,2,1,2,1,2],
+          [2,1,2,1,2,0,2,1,2,2,1,2,2,2,2,0,0,0,0,2,1,1,1,1,1,1,1,2,0,0,0,0,2,2,2,2,1,2,2,1,2,0,2,1,2,1,2],
+          [0,1,1,1,2,0,2,1,1,1,1,1,1,1,2,0,0,0,0,2,1,2,0,0,0,2,1,2,0,0,0,0,2,1,1,1,1,1,1,1,2,0,2,1,1,1,0],
+          [2,1,2,1,2,0,2,1,2,2,2,2,2,1,2,0,0,0,0,2,1,2,0,0,0,2,1,2,0,0,0,0,2,1,2,2,2,2,2,1,2,0,2,1,2,1,2],
+          [2,1,2,1,2,2,2,1,2,0,0,0,2,1,2,0,0,0,0,2,1,2,0,0,0,2,1,2,0,0,0,0,2,1,2,0,0,0,2,1,2,2,2,1,2,1,2],
+          [2,1,2,1,1,1,1,1,2,0,0,0,2,1,2,2,2,2,2,2,1,2,0,0,0,2,1,2,2,2,2,2,2,1,2,0,0,0,2,1,1,1,1,1,2,1,2],
+          [2,1,2,1,2,2,2,1,2,2,2,2,2,1,1,1,1,1,1,1,1,2,2,2,2,2,1,1,1,1,1,1,1,1,2,2,2,2,2,1,2,2,2,1,2,1,2],
+          [2,1,2,1,2,0,2,1,1,1,1,1,1,1,2,2,2,2,2,2,1,0,0,0,0,0,1,2,2,2,2,2,2,1,1,1,1,1,1,1,2,0,2,1,2,1,2],
+          [0,1,1,1,2,0,2,1,2,2,2,2,2,1,2,0,0,0,0,2,1,2,2,2,2,2,1,2,0,0,0,0,2,1,2,2,2,2,2,1,2,0,2,1,1,1,0],
+          [2,1,2,1,2,0,2,1,2,0,0,0,2,1,2,0,0,0,0,2,1,0,0,0,0,0,1,2,0,0,0,0,2,1,2,0,0,0,2,1,2,0,2,1,2,1,2],
+          [2,1,2,1,2,2,2,1,2,2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,2,1,2,2,2,1,2,1,2],
+          [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+          [2,2,2,2,1,2,1,2,2,1,2,1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,1,1,2,1,2,2,1,2,1,2,2,2,2],
+          [2,1,1,2,1,2,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,2,1,2,1,1,2],
+          [2,1,1,2,1,2,2,1,1,2,2,1,2,2,2,1,2,1,2,2,1,1,2,1,2,1,1,2,2,1,2,1,2,2,2,1,2,2,1,1,2,2,1,2,1,1,2],
+          [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+          [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+      ];
+      function play(sound){
+        var audio = document.getElementById(sound);
+        audio.play();
+      }
+
+      function getTime(){
+				var date = new Date();
+				return date.getTime();
+			}
+
+      function getSecondsPast(timeIn){
+        var timeNow = getTime();
+        var dif = (timeNow - timeIn)/1000;
+        var secondsPast = Math.abs(dif);
+        return secondsPast;
+      }
+
+      function displayWorld(){
+        var output = "";
+        for(var i=0; i<world.length; i++){
+          output += "<div class='row'>";
+          for(var j=0; j<world[i].length; j++){
+            if(world[i][j] == 2)
+              output += "<div class='brick'></div>";
+              else if(world[i][j] == 1)
+                output += "<div class='coin'></div>";
+                else if(world[i][j] == 0)
+                  output += "<div class='empty'></div>";
+                  else if(world[i][j] == 3)
+                    output += "<div class='cherries'></div>";
+          }
+          output += "</div>";
+        }
+        document.getElementById('world').innerHTML = output;
+        var paclives = "<img src='images/Pac_Man.png'>"
+        if(starting){
+          for(var i=0; i<lives; i++){
+            document.getElementById('lives').innerHTML += paclives;
+          }
+        } else {
+            document.getElementById('lives').innerHTML = '';
+            document.getElementById('lives').innerHTML = "<div id='lives'><h1>Lives: </h1></div>";
+            for(var i=0; i<lives; i++){
+              document.getElementById('lives').innerHTML += paclives;
+            }
+          }
+        starting = false;
+      }
+
+      function displayPacman(){
+        document.getElementById('pacman').style.left = pacman.x*20 + "px";
+        document.getElementById('pacman').style.top = pacman.y*20+140 + "px";
+      }
+      function displayGhosts(){
+        document.getElementById('pinky').style.left = pinky.x*20 + "px";
+        document.getElementById('pinky').style.top = pinky.y*20+140 + "px";
+        document.getElementById('blinky').style.left = blinky.x*20 + "px";
+        document.getElementById('blinky').style.top = blinky.y*20+140 + "px";
+        document.getElementById('inky').style.left = inky.x*20 + "px";
+        document.getElementById('inky').style.top = inky.y*20+140 + "px";
+        document.getElementById('clyde').style.left = clyde.x*20 + "px";
+        document.getElementById('clyde').style.top = clyde.y*20+140 + "px";
+      }
+      function leftTunnelPass(){
+        pacman.x = 46;
+        displayPacman();
+      }
+      function rightTunnelPass(){
+        pacman.x = 0;
+        displayPacman();
+      }
+
+      displayWorld();
+      displayPacman();
+      displayGhosts();
+
+      function displayScore(){
+        document.getElementById('score').innerHTML = score*10;
+      }
+
+      var randomNumberBetween = function(min, max){
+  			return Math.random()*(max-min) + min;
+  		}
+
+      //get a direction
+      var direction = Math.ceil(randomNumberBetween(36,40));
+      var directionb = Math.ceil(randomNumberBetween(36,40));
+      var directioni = Math.ceil(randomNumberBetween(36,40));
+      var directionc = Math.ceil(randomNumberBetween(36,40));
+
+      // function getGhostMoving(ghosts){
+      //   console.log(ghosts);
+    	// 	for(var ghost in ghosts){
+      //     console.log(ghosts[ghost].name);
+      //   }
+      //   if(direction == 37 && world[ghosts[ghost].y][ghosts[ghost].x-1] != 2) { //left
+      //     if((ghosts[ghost].y == 8 && ghosts[ghost].x == 0) || (ghosts[ghost].y == 14 && ghosts[ghost].x == 0)) leftTunnelPass();
+      //     ghosts[ghost].x --;
+      //     document.getElementById(ghosts[ghost].name).style.transform  = "rotateY(0deg)";
+      //     document.getElementById(ghosts[ghost].name).style.transform  = "rotateY(180deg)";
+      //   } else if(direction == 39 && world[ghosts[ghost].y][ghosts[ghost].x+1] != 2){ //right
+      //     if((ghosts[ghost].y == 8 && ghosts[ghost].x == 46) || (ghosts[ghost].y == 14 && ghosts[ghost].x == 46)) rightTunnelPass();
+      //     ghosts[ghost].x ++;
+      //     document.getElementById(ghosts[ghost].name).style.transform  = "rotateY(0deg)";
+      //   } else if(direction == 40 && world[ghosts[ghost].y+1][ghosts[ghost].x] != 2 ) { //down
+      //     ghosts[ghost].y ++;
+      //   } else if(direction == 38 && world[ghosts[ghost].y-1][ghosts[ghost].x] != 2) { //up
+      //     ghosts[ghost].y --;
+      //   }  else direction = Math.ceil(randomNumberBetween(36,40));
+        function getGhostMoving(){
+        //get a new direction
+        if(direction == 37 && world[pinky.y][pinky.x-1] != 2) { //left
+          if((pinky.y == 8 && pinky.x == 0) || (pinky.y == 14 && pinky.x == 0)) leftTunnelPass();
+          pinky.x --;
+          document.getElementById('pinky').style.transform  = "rotateY(0deg)";
+          document.getElementById('pinky').style.transform  = "rotateY(180deg)";
+        } else if(direction == 39 && world[pinky.y][pinky.x+1] != 2){ //right
+          if((pinky.y == 8 && pinky.x == 46) || (pinky.y == 14 && pinky.x == 46)) rightTunnelPass();
+          pinky.x ++;
+          document.getElementById('pinky').style.transform  = "rotateY(0deg)";
+        } else if(direction == 40 && world[pinky.y+1][pinky.x] != 2 ) { //down
+          pinky.y ++;
+        } else if(direction == 38 && world[pinky.y-1][pinky.x] != 2) { //up
+          pinky.y --;
+        }  else direction = Math.ceil(randomNumberBetween(36,40)); //get a new direction
+
+        //********************fix this with array of ghost and .this and fix the ghosts eyes
+        if(directionb == 37 && world[blinky.y][blinky.x-1] != 2) { //left
+          if((blinky.y == 8 && blinky.x == 0) || (blinky.y == 14 && blinky.x == 0)) leftTunnelPass();
+          blinky.x --;
+          document.getElementById('blinky').style.transform  = "rotateY(0deg)";
+          document.getElementById('blinky').style.transform  = "rotateY(180deg)";
+        } else if(directionb == 39 && world[blinky.y][blinky.x+1] != 2){ //right
+          if((blinky.y == 8 && blinky.x == 46) || (blinky.y == 14 && blinky.x == 46)) rightTunnelPass();
+          blinky.x ++;
+          document.getElementById('blinky').style.transform  = "rotateY(0deg)";
+        } else if(directionb == 40 && world[blinky.y+1][blinky.x] != 2 ) { //down
+          blinky.y ++;
+        } else if(directionb == 38 && world[blinky.y-1][blinky.x] != 2) { //up
+          blinky.y --;
+        }  else directionb = Math.ceil(randomNumberBetween(36,40));
+
+        if(directioni == 37 && world[inky.y][inky.x-1] != 2) { //left
+          if((inky.y == 8 && inky.x == 0) || (inky.y == 14 && inky.x == 0)) leftTunnelPass();
+          inky.x --;
+          document.getElementById('inky').style.transform  = "rotateY(0deg)";
+          document.getElementById('inky').style.transform  = "rotateY(180deg)";
+        } else if(directioni == 39 && world[inky.y][inky.x+1] != 2){ //right
+          if((inky.y == 8 && inky.x == 46) || (inky.y == 14 && inky.x == 46)) rightTunnelPass();
+          inky.x ++;
+          document.getElementById('inky').style.transform  = "rotateY(0deg)";
+        } else if(directioni == 40 && world[inky.y+1][inky.x] != 2 ) { //down
+          inky.y ++;
+        } else if(directioni == 38 && world[inky.y-1][inky.x] != 2) { //up
+          inky.y --;
+        }  else directioni = Math.ceil(randomNumberBetween(36,40));
+
+        if(directionc == 37 && world[clyde.y][clyde.x-1] != 2) { //left
+          if((clyde.y == 8 && clyde.x == 0) || (clyde.y == 14 && clyde.x == 0)) leftTunnelPass();
+          clyde.x --;
+          document.getElementById('clyde').style.transform  = "rotateY(0deg)";
+          document.getElementById('clyde').style.transform  = "rotateY(180deg)";
+        } else if(directionc == 39 && world[clyde.y][clyde.x+1] != 2){ //right
+          if((clyde.y == 8 && clyde.x == 46) || (clyde.y == 14 && clyde.x == 46)) rightTunnelPass();
+          clyde.x ++;
+          document.getElementById('clyde').style.transform  = "rotateY(0deg)";
+        } else if(directionc == 40 && world[clyde.y+1][clyde.x] != 2 ) { //down
+          clyde.y ++;
+        } else if(directionc == 38 && world[clyde.y-1][clyde.x] != 2) { //up
+          clyde.y --;
+        }  else directionc = Math.ceil(randomNumberBetween(36,40));
+
+        if((pacman.x === pinky.x && pacman.y === pinky.y) || (pacman.x === blinky.x && pacman.y === blinky.y) ||
+            (pacman.x === inky.x && pacman.y === inky.y) || (pacman.x === clyde.x && pacman.y === clyde.y)){
+              lives--;
+              play("death");
+              alert("PACMAN DIED!!!!!")
+              if(lives > 0) {
+                pacman.x = 23;
+                pacman.y = 15;
+                document.getElementById('pacman').style.transform  = "rotateY(0deg)";
+                displayPacman();
+              }
+            }
+
+        displayGhosts();
+      }
+
+      document.onkeydown = function(e){
+        if(e.keyCode == 37 && world[pacman.y][pacman.x-1] != 2) { //left
+          if((pacman.y == 8 && pacman.x == 0) || (pacman.y == 14 && pacman.x == 0)) leftTunnelPass();
+          pacman.x --;
+          document.getElementById('pacman').style.transform  = "rotateY(0deg)";
+          document.getElementById('pacman').style.transform  = "rotateY(180deg)";
+        } else if(e.keyCode == 39 && world[pacman.y][pacman.x+1] != 2){ //right
+          if((pacman.y == 8 && pacman.x == 46) || (pacman.y == 14 && pacman.x == 46)) rightTunnelPass();
+          pacman.x ++;
+          document.getElementById('pacman').style.transform  = "rotateY(0deg)";
+        } else if(e.keyCode == 40 && world[pacman.y+1][pacman.x] != 2 ) { //down
+          pacman.y ++;
+          document.getElementById('pacman').style.transform  = "rotate(90deg)";
+        } else if(e.keyCode == 38 && world[pacman.y-1][pacman.x] != 2) { //up
+          pacman.y --;
+          document.getElementById('pacman').style.transform  = "rotate(-90deg)";
+        }
+
+        if((pacman.x === pinky.x && pacman.y === pinky.y) || (pacman.x === blinky.x && pacman.y === blinky.y) ||
+            (pacman.x === inky.x && pacman.y === inky.y) || (pacman.x === clyde.x && pacman.y === clyde.y)){
+              lives--;
+              play("death");
+              alert("PACMAN DIED!!!!!")
+              if(lives > 0) {
+                pacman.x = 23;
+                pacman.y = 15;
+              }
+            }
+
+        if(timerStarted == false){
+          timerStarted = true;
+          time = getTime();
+        }
+        var secondspast = getSecondsPast(time);
+        if(secondspast >= 28){
+          world[13][23] = 3;
+          cherryTimer = getTime();
+          cherryOut = true;
+          timerStarted = false;
+        }
+        if(cherryOut && getSecondsPast(cherryTimer) >= 15){
+          world[13][23] = 0;
+          cherryOut = false;
+        }
+
+        if(world[pacman.y][pacman.x] == 1){
+            world[pacman.y][pacman.x] = 0;
+            play("chomp");
+            score++;
+            displayWorld();
+          }
+          if(world[pacman.y][pacman.x] == 3){
+              world[pacman.y][pacman.x] = 0;
+              play("cherry")
+              score +=5;
+              timerStarted = false;
+              displayWorld();
+            }
+        displayWorld();
+        displayPacman();
+        displayScore();
+     }
+    var myVar = setInterval(getGhostMoving, 150);
+    </script>
+    <embed name="GoodEnough" src="music/pacman_beginning.wav" loop="false" hidden="true" autostart="true">
+  </body>
+</html>
