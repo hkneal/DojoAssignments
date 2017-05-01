@@ -46,7 +46,7 @@
         padding: 0;
         vertical-align: top;
       }
-      div.brick{
+      .brick{
       background-color: blue;
       /*border-radius: 5px;*/
       }
@@ -215,13 +215,15 @@
       var ghosts = [pinky,blinky,inky,clyde];
       var score = 00;
       var lives = 3;
+      var chompedCounter = 0;
       var direction = "";
       var directionp = "";
       var directionb = "";
       var directioni = "";
       var directionc = "";
-      var timerStarted = cherryOut = ghostMoving = chaseGhosts = false;
+      var timerStarted = cherryOut = ghostMoving = chaseGhosts = chomped = false;
       var starting = firstMove = true;
+      var colorArray = ["blue", "red", "green", "aqua", "blueviolet", "seagreen", "chartreuse"];
       var world = [
           [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
           [2,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2],
@@ -264,24 +266,68 @@
         return secondsPast;
       }
 
+      function isWorldChomped(){
+        chomped = true;
+        for(var i=0; i<world.length; i++){
+          for(var j=0; j<world[i].length; j++){
+            if(world[i][j] == 1) {
+              chomped = false;
+              break;
+            }
+          }
+        }
+      }
+
       function displayWorld(){
+        isWorldChomped();
+        if(chomped){
+          play("extra");
+          if(lives <= 6) lives++; //6 lives max
+          play("newlevel");
+          pinky.x = pinky.bx;
+          pinky.y = pinky.by;
+          blinky.x = blinky.bx;
+          blinky.y = blinky.by;
+          inky.x = inky.bx;
+          inky.y = inky.by;
+          clyde.x = clyde.bx;
+          clyde.y = clyde.by;
+          pacman.x = 23;
+          pacman.y = 15;
+          for(var i=0; i<world.length; i++){
+            for(var j=0; j<world[i].length; j++){
+              if(world[i][j] == 6) {
+                world[i][j] = 1;
+              }
+              if(world[i][j] == 7) {
+                world[i][j] = 4;
+              }
+            }
+          }
+          chompedCounter++;
+          if(chompedCounter >6) chompedCounter = 1; //reset counter
+          chomped = false;
+        }
         var output = "";
         for(var i=0; i<world.length; i++){
           output += "<div class='row'>";
           for(var j=0; j<world[i].length; j++){
-            if(world[i][j] == 2)
-              output += "<div class='brick'></div>";
-              else if(world[i][j] == 1)
+            if(world[i][j] == 2) {
+              if(chompedCounter > 0) {
+                output += "<div class='brick' name='brick' style='background-color:" + colorArray[chompedCounter]+ ";'></div>";
+                } else output += "<div class='brick' name='brick'></div>";
+              } else if(world[i][j] == 1)
                 output += "<div class='coin'></div>";
-                else if(world[i][j] == 0)
+                else if(world[i][j] == 0 || world[i][j] == 6 || world[i][j] == 7)
                   output += "<div class='empty'></div>";
                   else if(world[i][j] == 3)
                     output += "<div class='cherries'></div>";
-                    else if(world[i][j] == 4)
+                    else if(world[i][j] == 4 )
                       output += "<div class='powerball'></div>";
-          }
-          output += "</div>";
-        }
+                    }
+                output += "</div>";
+            }
+
         document.getElementById('world').innerHTML = output;
         var paclives = "<img src='images/Pac_Man.png'>"
         if(starting){
@@ -609,68 +655,6 @@
               }
       }
 
-
-      // function getDirectionPinky(){
-      //   // var currentd = direction;
-      //   var posibles = [];
-      //   if(world[pinky.y + 1][pinky.x] != 2){
-      //     posibles.push("40"); //down
-      //   }
-      //   if(world[pinky.y][pinky.x + 1] != 2){
-      //     posibles.push("39");  //right
-      //   }
-      //   if(world[pinky.y - 1][pinky.x] != 2){
-      //     posibles.push("38");  //up
-      //   }
-      //   if(world[pinky.y][pinky.x - 1] != 2){
-      //     posibles.push("37"); //left
-      //   }
-      //   if(pinky.y < pacman.y && posibles.includes("40")){
-      //     direction = "40";
-      //   } else if (pinky.y > pacman.y && posibles.includes("38")) {
-      //     direction = "38";
-      //   } else if (pinky.x > pacman.x && posibles.includes("37")) {
-      //     direction = "37";
-      //   } else if (pinky.x < pacman.x && posibles.includes("39")) {
-      //     direction = "39";
-      //   } else if (pinky.y === pacman.y || pinky.x == pacman.x) {
-      //     for(var i=0; i<posibles.length; i++){
-      //       if(!(isOpposite(direction, posibles[i]))) {
-      //         direction = posibles[i];
-      //         break;
-      //       }
-      //     }
-      //   }
-      //   // console.log("direction:" + direction);
-      //   // console.log(posibles);
-      //   return direction;
-      // }
-
-      //get a direction
-      // var direction = Math.ceil(randomNumberBetween(36,40));
-      // var directionb = Math.ceil(randomNumberBetween(36,40));
-      // var directioni = Math.ceil(randomNumberBetween(36,40));
-      // var directionc = Math.ceil(randomNumberBetween(36,40));
-
-      // function getGhostMoving(ghosts){
-      //   console.log(ghosts);
-    	// 	for(var ghost in ghosts){
-      //     console.log(ghosts[ghost].name);
-      //   }
-      //   if(direction == 37 && world[ghosts[ghost].y][ghosts[ghost].x-1] != 2) { //left
-      //     if((ghosts[ghost].y == 8 && ghosts[ghost].x == 0) || (ghosts[ghost].y == 14 && ghosts[ghost].x == 0)) leftTunnelPass();
-      //     ghosts[ghost].x --;
-      //     document.getElementById(ghosts[ghost].name).style.transform  = "rotateY(0deg)";
-      //     document.getElementById(ghosts[ghost].name).style.transform  = "rotateY(180deg)";
-      //   } else if(direction == 39 && world[ghosts[ghost].y][ghosts[ghost].x+1] != 2){ //right
-      //     if((ghosts[ghost].y == 8 && ghosts[ghost].x == 46) || (ghosts[ghost].y == 14 && ghosts[ghost].x == 46)) rightTunnelPass();
-      //     ghosts[ghost].x ++;
-      //     document.getElementById(ghosts[ghost].name).style.transform  = "rotateY(0deg)";
-      //   } else if(direction == 40 && world[ghosts[ghost].y+1][ghosts[ghost].x] != 2 ) { //down
-      //     ghosts[ghost].y ++;
-      //   } else if(direction == 38 && world[ghosts[ghost].y-1][ghosts[ghost].x] != 2) { //up
-      //     ghosts[ghost].y --;
-      //   }  else direction = Math.ceil(randomNumberBetween(36,40));
         function checkCollision(character){
           if(chaseGhosts){
             score += 20;
@@ -685,7 +669,7 @@
             alert("PACMAN DIED!!!!!");
             if(lives === 0){
               alert("GAME OVER");
-              alert("Your Score is: " + score);
+              alert("Your Score is: " + score + " ");
               location.reload(true);
             }
             if(lives > 0) {
@@ -742,7 +726,7 @@
           pinky.y --;
         }  else directionp = Math.ceil(randomNumberBetween(36,40)); //get a new direction
 
-        //********************fix this with array of ghost and .this and fix the ghosts eyes
+
         if(directionb == 37 && world[blinky.y][blinky.x-1] != 2) { //left
           if((blinky.y == 8 && blinky.x == 0) || (blinky.y == 14 && blinky.x == 0)) leftTunnelPass(blinky);
           blinky.x --;
@@ -837,7 +821,7 @@
         }
 
         if(world[pacman.y][pacman.x] == 1){
-            world[pacman.y][pacman.x] = 0;
+            world[pacman.y][pacman.x] = 6;
             play("chomp");
             score++;
             displayWorld();
@@ -850,7 +834,7 @@
             displayWorld();
           }
         if(world[pacman.y][pacman.x] == 4){
-            world[pacman.y][pacman.x] = 0;
+            world[pacman.y][pacman.x] = 7;
             play("chaseghost");
             chaseGhosts = true;
             ghostTimer = getTime();
@@ -863,7 +847,7 @@
         displayPacman();
         displayScore();
      }
-    var myVar = setInterval(getGhostMoving, 275);
+    var myVar = setInterval(getGhostMoving, 220);
     </script>
     <embed name="GoodEnough" src="music/pacman_beginning.wav" loop="false" hidden="true" autostart="true">
   </body>
