@@ -444,7 +444,11 @@
               direction = "40";
             } else if (ghost.y > pacman.y && posibles.includes("38")) {
               direction = "38";
-            } else if (ghost.x > pacman.x && posibles.includes("37")) {
+            } else if (ghost.x > pacman.x && posibles.includes("39") && (ghost.x == 45 || ghost.x == 46)){
+              direction = "39";
+            } else if (ghost.x > pacman.x && posibles.includes("37")){
+              direction = "37";
+            } else if (ghost.x < pacman.x && posibles.includes("37") && (ghost.x == 1 || ghost.x == 0)){
               direction = "37";
             } else if (ghost.x < pacman.x && posibles.includes("39")) {
               direction = "39";
@@ -498,10 +502,14 @@
         }
         if(!chaseGhosts) {
             // var currentd = direction;
-            if (ghost.x > pacman.x && posibles.includes("37")) {
-            direction = "37";
+            if (ghost.x > pacman.x && posibles.includes("39") && (ghost.x == 45 || ghost.x == 46)){
+              direction = "39";
+            }else if (ghost.x > pacman.x && posibles.includes("37")) {
+              direction = "37";
             } else if (ghost.x < pacman.x && posibles.includes("39")) {
-            direction = "39";
+              direction = "39";
+            } else if (ghost.x < pacman.x && posibles.includes("37") && (ghost.x == 1 || ghost.x == 0)){
+              direction = "37";
             } else if(ghost.y < pacman.y && posibles.includes("40")){
               direction = "40";
             } else if (ghost.y > pacman.y && posibles.includes("38")) {
@@ -519,9 +527,9 @@
             return direction;
           } else {
             if (ghost.x > pacman.x && posibles.includes("39")) {
-            direction = "39";
+              direction = "39";
           } else if (ghost.x < pacman.x && posibles.includes("37")) {
-            direction = "37";
+              direction = "37";
           } else if(ghost.y < pacman.y && posibles.includes("38")){
               direction = "38";
             } else if (ghost.y > pacman.y && posibles.includes("40")) {
@@ -556,10 +564,14 @@
         }
         if(!chaseGhosts) {
             // var currentd = direction;
-            if (ghost.x > pacman.x && posibles.includes("37")) {
-            direction = "37";
+            if (ghost.x > pacman.x && posibles.includes("39") && (ghost.x == 45 || ghost.x == 46)){
+              direction = "39";
             } else if (ghost.y < pacman.y && posibles.includes("40")) {
-            direction = "40";
+              direction = "40";
+            } else if (ghost.x > pacman.x && posibles.includes("37")) {
+              direction = "37";
+            } else if (ghost.x < pacman.x && posibles.includes("37") && (ghost.x == 1 || ghost.x == 0)){
+              direction = "37";
             } else if(ghost.x < pacman.x && posibles.includes("39")){
               direction = "39";
             } else if (ghost.y > pacman.y && posibles.includes("38")) {
@@ -577,9 +589,9 @@
             return direction;
           } else {
             if (ghost.y > pacman.y && posibles.includes("40")) {
-            direction = "40";
+              direction = "40";
           } else if (ghost.x < pacman.x && posibles.includes("37")) {
-            direction = "37";
+              direction = "37";
           } else if(ghost.y < pacman.y && posibles.includes("38")){
               direction = "38";
             } else if (ghost.x > pacman.x && posibles.includes("39")) {
@@ -614,9 +626,13 @@
             if(!chaseGhosts) {
                 // var currentd = direction;
                 if (ghost.y > pacman.y && posibles.includes("38")) {
-                direction = "38";
+                  direction = "38";
+                } else if (ghost.x > pacman.x && posibles.includes("39") && (ghost.x == 45 || ghost.x == 46)){
+                  direction = "39";
                 } else if (ghost.x > pacman.x && posibles.includes("37")) {
-                direction = "37";
+                  direction = "37";
+                } else if (ghost.x < pacman.x && posibles.includes("37") && (ghost.x == 1 || ghost.x == 0)){
+                  direction = "37";
                 } else if(ghost.x < pacman.x && posibles.includes("39")){
                   direction = "39";
                 } else if (ghost.y < pacman.y && posibles.includes("40")) {
