@@ -1,0 +1,14 @@
+/*RESET*/
+*{
+  margin: 0;
+  padding: 0;
+}
+h1{
+  text-align: center;
+  margin: 40px;
+}
+img{
+  margin: 5px;
+  margin-left: 44%;
+  display: block;
+}

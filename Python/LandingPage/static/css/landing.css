@@ -1,0 +1,13 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  background-color: slategrey;
+}
+h1, p{
+  text-align: center;
+  color: DarkBlue;
+  margin-top: 80px;
+}
