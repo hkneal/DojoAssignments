@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Counter Homepage</title>
+  </head>
+  <body>
+    <h1>Counter</h1>
+    <p>{{ session['counter'] }} times:</p>
+    <form class="button" action="/addtwo" method="get">
+      <input type="submit" name="timestwo" value="Add Two">
+    </form>
+    <form class="button" action="/reset" method="get">
+      <input type="submit" name="reset" value="RESET">
+    </form>
+  </body>
+</html>
