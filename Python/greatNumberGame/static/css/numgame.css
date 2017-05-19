@@ -1,0 +1,54 @@
+/*RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  background-color: lightgrey;
+}
+.main{
+  width: 960px;
+  height: 1000px;
+  background-color: whitesmoke;
+  margin-left: 16%;
+  margin-top: 0px;
+  display: inline-block;
+}
+h1{
+  text-align: center;
+  margin: 40px;
+  color: mediumblue;
+}
+h3{
+  text-align: center;
+  margin-top: 10px;
+  color: mediumblue;
+}
+input{
+  margin-left: 46%;
+  margin-top: 10px;
+  width: 80px;
+  text-align: center;
+  display: block;
+}
+.lowguess{
+  text-align: center;
+  color: white;
+  width: 180px;
+  height: 180px;
+  margin-left: 40%;
+  border: 2px solid black;
+  background-color: red;
+}
+.lowguess h1, .rightguess h1{
+  color: white;
+}
+.rightguess{
+  text-align: center;
+  color: white;
+  width: 180px;
+  height: 180px;
+  margin-left: 40%;
+  border: 2px solid black;
+  background-color: green;
+}
