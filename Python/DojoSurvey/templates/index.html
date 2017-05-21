@@ -7,6 +7,13 @@
   <body>
     <form action="/result" method="post">
       <h1>Dojo Survey</h1>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
       <p></p>
       <label for="name">Your Name (First and Last):</label>
       <input type="text" id="name" name="name">
