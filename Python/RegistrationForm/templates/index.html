@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Registration Form Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <p class="{{ category }}">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+    <form class="register" action="/validate" method="post">
+      First Name: <input type="text" name="first_name" value="{{ session['fname']}}">
+      <p></p>
+      Last Name: <input type="text" name="last_name" value="{{ session['lname'] }}">
+      <p></p>
+      Birthdate in format ("YY-MM-DD"): <input type="text" name="bday" value="{{ session['bday'] }}">
+      <p></p>
+      Email: <input type="text" name="email" value="{{ session['email'] }}">
+      <p></p>
+      Password: <input type="text" name="password" value="{{ session['password'] }}">
+      <p></p>
+      Confirm Password: <input type="text" name="confirm_password" value="{{ session['confirm_password'] }}">
+      <p></p>
+      <input type="submit" value="Submit Form">
+    </form>
+  </body>
+</html>

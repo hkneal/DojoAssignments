@@ -1,0 +1,15 @@
+/* RESET */
+*{
+  margin: 10px;
+  padding: 0px;
+}
+.error{
+  font-weight: bold;
+  text-decoration: underline;
+  color: red;
+}
+.ok{
+  font-weight: bold;
+  text-decoration: underline;
+  color: green;
+}
