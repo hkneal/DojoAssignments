@@ -60,6 +60,7 @@ def submit():
 
     #validate the input starting with first_name
     if not validateName(session['fname']):
+        #Create an errors array and push the error messages, check if errors at end
         flash("First name cannot be blank and cannot contain numbers or symbols!", 'error')
         return render_template("index.html")
     elif not validateName(session['lname']):
