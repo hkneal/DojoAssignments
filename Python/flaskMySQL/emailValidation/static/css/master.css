@@ -1,0 +1,81 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.invalidAddress{
+  margin: 50px;
+  width: 400px;
+  height: 60px;
+  background-color: red;
+  border: 2px solid black;
+  color: white;
+}
+.invalidAddress h1{
+  text-align: center;
+  margin: 10px;
+}
+.good_del{
+  margin: 50px;
+  width: 800px;
+  height: 100px;
+  background-color: green;
+  border: 3px solid black;
+}
+.bad_del{
+  margin: 50px;
+  width: 800px;
+  height: 100px;
+  background-color: red;
+  border: 3px solid black;
+}
+.success{
+  margin: 50px;
+  width: 800px;
+  height: 150px;
+  background-color: green;
+  border: 3px solid black;
+}
+.success h1{
+  margin: 10px;
+}
+.email_list{
+  margin: 60px;
+}
+.addresses{
+  width: 460px;
+}
+.delete{
+  margin: 40px;
+}
+#successHead{
+  margin-left: 20px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+#emailInput{
+  width: 200px;
+}
+#id{
+  text-align: left;
+  display: inline-block;
+  margin-left: 40px;
+  width: 55px;
+}
+#address{
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: bold;
+  width: 200px;
+}
+#date{
+  text-align: right;
+  display: inline-block;
+  font-weight: bold;
+  width: 150px;
+}
+#submit{
+  display: block;
+  margin-top: 20px;
+  margin-left: 250px;
+}

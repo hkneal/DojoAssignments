@@ -1,0 +1,67 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    margin-left: 160px;
+    margin-bottom: 20px;
+}
+td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.editDel{
+  display: inline-block;
+}
+.title{
+  margin: 60px;
+  text-align: center;
+}
+.addFriends{
+  margin-left: 20px;
+  text-align: right;
+}
+.inputs{
+  display: inline-block;
+  width: 231px;
+}
+.editinputs{
+  display: inline-block;
+  width: 231px;
+  margin: 50px;
+}
+.invalidAddress{
+  margin: 50px;
+  width: 400px;
+  height: 60px;
+  background-color: red;
+  border: 2px solid black;
+  color: white;
+  border-radius: 20px;
+}
+.invalidAddress h1{
+  text-align: center;
+  margin: 10px;
+}
+.invalidName{
+  margin: 50px;
+  width: 400px;
+  height: 230px;
+  background-color: red;
+  border: 2px solid black;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+#addbutton{
+  display: inline-block;
+}

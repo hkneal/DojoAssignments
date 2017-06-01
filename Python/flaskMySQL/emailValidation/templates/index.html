@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="eng-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Email Addresses</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    {% if invalidAddress: %}
+      <div class="invalidAddress">
+        <h1>Email address is not valid!</h1>
+      </div>
+    {% endif %}
+    <form class="email_list" action='/success' method="post">
+      <label for="email">Email Address:</label>
+      <input id='emailInput' type="text" name="email" value="">
+      <input id='submit' type="submit" value="Submit">
+    </form>
+  </body>
+</html>

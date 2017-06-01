@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Successful Email Address</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    {% if not deleteMe :%}
+      <div class="success">
+        <h1>The email address you entered {{ emailAddress }} is a VALID email address! Thank You!</h1>
+      </div>
+      {% else: %}
+        {% if lineNumber :%}
+          <div class="good_del">
+            <h1>The email address you entered for line number {{ lineNumber }} has been deleted!</h1></h1>
+          </div>
+          {% else: %}
+          <div class="bad_del">
+            <h1>You entered an invalid line number: {{ lineNumber }} </h1></h1>
+          </div>
+        {% endif %}
+    {% endif %}
+    <div class="addresses">
+    {% if addresses %}
+      <h1 id='successHead'>Email Addresses Entered:</h1>
+      {% for address in addresses: %}
+        <p id='id'>ID# {{ address['id'] }}</p>
+        <p id='address'>{{ address['email'] }}</p>
+        <p id='date'>{{ address['created_at'] }}</p>
+      {% endfor %}
+    {% endif %}
+    </div>
+    <form class="delete" action="/delete" method="post">
+      <label for="delete">Input an ID number to delete that record:</label>
+      <input id='lineNum' type="text" name="idNum" value="">
+      <input id='deleteLine' type="submit" value="Delete Email">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Full Friends Index Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    <h1 class='title'>Full Friends</h1>
+    {% if invalidAddress %}
+      <div class="invalidAddress">
+        <h1>Email address is not valid!</h1>
+      </div>
+    {% endif %}
+    {% if invalidName %}
+      <div class="invalidName">
+        <h1>You must enter a proper first and last name! Numbers and symbols are not valid.  Also, the name fields cannot be left blank.</h1>
+      </div>
+    {% endif %}
+    {% if friend_list: %}
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      {% for friend in friend_list: %}
+        <tr>
+          <td>{{ friend['first_name'] }}</td>
+          <td>{{ friend['last_name'] }}</td>
+          <td>{{ friend['email'] }}</td>
+          <td>
+            <form class="editDel" action="/friends/{{ friend['id'] }}/edit" method="get">
+              <input type="submit" value="Edit">
+            </form>
+            <form class="editDel" action="/friends/{{ friend['id'] }}/delete" method="post">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    <div class="inputs">
+    <form class="addFriends" action='/friends' method="post">
+      <label for="fname">First Name:</label>
+      <input type="text" name="fname" value="{{ session['fname'] }}">
+      <br>
+      <label for="lname">Last Name:</label>
+      <input type="text" name="lname" value="{{ session['lname'] }}">
+      <br>
+      <label for="email">Email:</label>
+      <input type="text" name="email" value="{{ session['email'] }}">
+    </div>
+      <input id="addbutton" type="submit" value="Add Friend">
+    </form>
+  </body>
+</html>
