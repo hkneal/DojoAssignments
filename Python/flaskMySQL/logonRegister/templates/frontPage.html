@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit a Friend's Info</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    <h1>Welcome to the Dojo!</h1>
+    <p>{{ session['first_name'] }}</p>
+    <p>{{ session['last_name'] }}</p>
+    <p>{{ session['email'] }}</p>
+    <form class="name" action='/' method="get">
+      <input id="addbutton" type="submit" value="Return Home">
+    </form>
+  </body>
+</html>

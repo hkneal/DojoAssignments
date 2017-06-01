@@ -1,0 +1,30 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.error{
+  font-weight: bold;
+  text-decoration: underline;
+  color: red;
+}
+.ok{
+  font-weight: bold;
+  text-decoration: underline;
+  color: green;
+}
+.register, .login{
+  margin: 10px;
+  text-align: right;
+}
+.registration{
+  width: 300px;
+  margin: 10px;
+}
+.loginDiv{
+  width: 300px;
+  margin: 10px;
+}
+#submit{
+  margin-left: 150px;
+}
