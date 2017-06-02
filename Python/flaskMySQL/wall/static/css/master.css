@@ -1,0 +1,106 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+header{
+  border-bottom: 5px solid blue;
+}
+header h1, h3{
+  display: inline-block;
+}
+header h1{
+  margin: 20px;
+  font-family: sans-serif;
+}
+header h3{
+  vertical-align: middle;
+  margin-left: 800px;
+  color: blue;
+}
+header a{
+  vertical-align: middle;
+  margin-left: 50px;
+}
+.comments, .opening{
+  margin-left: 60px;
+  width: 1100px;
+}
+.opening h3, h1{
+  margin-top: 40px;
+}
+.opening h3{
+  color: blue;
+}
+.comments h2{
+  margin: 10px;
+  margin-top: 40px;
+}
+.error{
+  font-weight: bold;
+  text-decoration: underline;
+  color: red;
+}
+.ok{
+  font-weight: bold;
+  text-decoration: underline;
+  color: green;
+}
+.register, .login{
+  margin: 10px;
+  text-align: right;
+}
+.registration{
+  width: 300px;
+  margin: 10px;
+}
+.loginDiv{
+  width: 300px;
+  margin: 10px;
+}
+#submit{
+  margin-left: 150px;
+}
+#inputBox{
+  width: 1095px;
+  height: 100px;
+}
+#commentBox{
+  margin-left: 80px;
+  width: 895px;
+  height: 80px;
+}
+#msgSub{
+  margin-top: 10px;
+  margin-left: calc(100% - 145px);
+  color: white;
+  background-color: blue;
+  box-shadow: 4px 4px black;
+  padding: 10px;
+  font-size: 12pt;
+}
+#submitC{
+  margin-top: 10px;
+  margin-left: calc(100% - 145px);
+  color: white;
+  background-color: green;
+  box-shadow: 4px 4px black;
+  padding: 10px;
+  font-size: 12pt;
+}
+#msgUser{
+  margin-top: 20px;
+  margin-left: 65px;
+}
+#commentUser{
+  margin-top: 20px;
+  margin-left: 85px;
+}
+#msg{
+  margin: 10px;
+  margin-left: 85px;
+}
+#comment{
+  margin: 10px;
+  margin-left: 105px;
+}

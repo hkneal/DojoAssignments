@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>The Dojo Comments Wall</title>
+    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>CodingDojo Wall</h1>
+      <h3>Welcome {{ username }}</h3>
+      <a href="/">log off</a>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <p class="{{ category }}">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+    <div class="comments">
+      <h2>Post a message</h2>
+      <form class="addMsg" action="/{{ session['id'] }}/addMsg" method="post">
+        <input id='inputBox' type="text" name="message" value="">
+        <!-- <input type="hidden" name="" value="{{ session['id'] }}"> -->
+        <input id='msgSub' type="submit" value="Post a message">
+      </form>
+    {% if messages: %}
+      {% for message in messages: %}
+        <h3 id='msgUser'>{{ message['first_name'] }} {{ message['last_name'] }} - {{ message['msg_created_at'] }}</h3>
+        <p id='msg'>{{ message['message'] }}</p>
+          {% if comments: %}
+            {% for comment in comments: %}
+              {% if message['message_id'] == comment['comment_message_id']: %}
+                <h3 id='commentUser'>{{ comment['first_name'] }} {{ comment['last_name'] }} {{ comment['comment_created_at'] }}</h3>
+                <p id='comment'>{{ comment['comment'] }}</p>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        <form class="addComment" action="/{{ message['message_id'] }}/addComment" method="post">
+          <input id='commentBox' type="text" name="comment" value="">
+          <input id='submitC' type="submit" value="Post a comment">
+        </form>
+      {% endfor %}
+    {% endif %}
+    </div>
+  </body>
+</html>
