@@ -1,0 +1,82 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.editDel{
+  display: inline-block;
+}
+.title{
+  margin: 20px;
+}
+.inputs{
+  display: inline-block;
+  width: 231px;
+}
+label{
+  display: block;
+  margin-top: 10px;
+}
+.invalidAddress{
+  margin: 50px;
+  width: 400px;
+  height: 60px;
+  background-color: red;
+  border: 2px solid black;
+  color: white;
+  border-radius: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+h1{
+  margin: 20px;
+}
+#or{
+  margin: 10px;
+  display: inline-block;
+}
+.directors, .user{
+  margin: 10px;
+  margin-left: 20px;
+}
+.invalidName{
+  margin: 50px;
+  width: 400px;
+  height: 120px;
+  background-color: red;
+  border: 2px solid black;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+.inputs{
+  margin: 20px;
+  width: 209px;
+  display: block;
+  text-align: left;
+}
+#blueButton{
+  margin: 20px;
+  background-color: #597EAA;
+  box-shadow: 5px 5px black;
+  display: block;
+  color: white;
+  font-size: 11pt;
+  padding: 5px;
+}

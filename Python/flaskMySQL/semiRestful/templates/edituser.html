@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit a User</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    {% if invalidAddress %}
+      <div class="invalidAddress">
+        <h1>Email address is not valid!</h1>
+      </div>
+    {% endif %}
+    {% if invalidName %}
+      <div class="invalidName">
+        <h1>You must enter a proper first and last name! Numbers and symbols are not valid.  Also, the name fields cannot be left blank.</h1>
+      </div>
+    {% endif %}
+    <h1>Edit User {{ user['id'] }}</h1>
+    <div class="inputs">
+    <form class="editUserForm" action='/users/{{ user['id'] }}' method="post">
+      <label for="first_name">First Name:</label>
+      <input type="text" name="first_name" value="{{ user['first_name'] }}">
+      <br>
+      <label for="last_name">Last Name:</label>
+      <input type="text" name="last_name" value="{{ user['last_name'] }}">
+      <br>
+      <label for="email">Email:</label>
+      <input type="text" name="email" value="{{ user['email'] }}">
+    </div>
+      <input id="blueButton" type="submit" value="Update">
+    </form>
+    <a class="directors" href="/users/{{ user['id'] }}">Show</a>
+    <p id="or"> | </p>
+    <a class="directors" href="/users">Go Back</a>
+  </body>
+</html>

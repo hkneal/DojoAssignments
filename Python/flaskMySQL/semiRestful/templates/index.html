@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Semi RESTful Index Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    <h1 class='title'>Users</h1>
+    {% if users_list: %}
+    <table>
+      <tr>
+        <th>id</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+      {% for user in users_list: %}
+        <tr>
+          <td>{{ user['id'] }}</td>
+          <td><a href="/users/{{ user['id'] }}">{{ user['first_name'] }} {{ user['last_name'] }}</a></td>
+          <td>{{ user['email'] }}</td>
+          <td>{{ user['created_at'] }}</td>
+          <td>
+            <a href="/users/{{ user['id'] }}">Show</a>
+            <a href="/users/{{ user['id'] }}/edit">Edit</a>
+            <a href="/users/{{ user['id'] }}/destroy">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+    <a class="directors" href="/users/new">Add a new user</a>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Show a user</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    <h1>User {{ user['id'] }}</h1>
+    <div class="user">
+      <p>Full Name: {{ user['first_name'] }} {{ user['last_name'] }}</p>
+      <p>Email: {{ user['email'] }}</p>
+      <p>Created at: {{ user['created_at'] }}</p>
+    </div>
+    <a class="directors" href="/users/{{ user['id'] }}/edit">Edit</a>
+    <p id="or"> | </p>
+    <a class="directors" href="/users/{{ user['id'] }}/destroy">Delete</a>
+    <p id="or"> | </p>
+    <a class="directors" href="/users">Go Back</a>
+  </body>
+</html>

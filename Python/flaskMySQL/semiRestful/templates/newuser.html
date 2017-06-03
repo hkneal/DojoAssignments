@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Add a new user</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+    <h1>Add a new user</h1>
+    {% if invalidAddress %}
+      <div class="invalidAddress">
+        <h2>Email address is not valid!</h2>
+      </div>
+    {% endif %}
+    {% if invalidName %}
+      <div class="invalidName">
+        <h2>You must enter a proper first and last name! Numbers and symbols are not valid.  Also, the name fields cannot be left blank.</h2>
+      </div>
+    {% endif %}
+      <div class="inputs">
+      <form class="addUser" action='/users/create' method="post">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" value="{{ session['fname'] }}">
+        <br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" value="{{ session['lname'] }}">
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" name="email" value="{{ session['email'] }}">
+      </div>
+        <input id="blueButton" type="submit" value="Create">
+      </form>
+      <a class="directors" href="/users">Go Back</a>
+    </body>
+</html>
