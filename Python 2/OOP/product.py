@@ -10,8 +10,14 @@ class store(object):
         self.products.append(product)
         return self
 
-    def remove_product(self, product_name):
-        self.products.remove(product_name)
+    def remove_product(self, product):
+        self.products.remove(product)
+        return self
+
+    def removeByName(self, product_name):
+        for product in self.products:
+            if product.item_name == product_name:
+                self.products.remove(product)
         return self
 
     def inventory(self):
@@ -74,4 +80,4 @@ bike2.display_Info()
 
 walmart = store([bike, bike2], "5555 Oakvile Lane", "Micheal Jordan")
 walmart.inventory()
-walmart.add_product(bike3).remove_product(bike2).inventory()
+walmart.add_product(bike3).remove_product(bike).removeByName("Huffy BMX").inventory()
