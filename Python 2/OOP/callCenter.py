@@ -1,14 +1,13 @@
-import datetime, time
+import datetime, time, itertools
 from time import strftime
 class Call(object):
-    id_num = 0
-
+    newid = itertools.count().next
     def __init__(self, caller_name, caller_phone_num, call_reason):
         self.caller_name = caller_name
         self.caller_phone_num = caller_phone_num
         self.call_time = datetime.datetime.now()
         self.call_reason = call_reason
-        self.id_num = self.id_num + 1;
+        self.id_num = Call.newid()
 
     def displayCall(self):
         print "Caller Name: " + self.caller_name
@@ -59,6 +58,7 @@ class CallCenter(object):
         # self.calls.sort(key=lambda call: call.call_time)
         return self
 
+caller_id = [0] * 1000  #however number of caller numbers we want
 caller1 = Call("Hiram Neal", "(428) 986-6754", "Testing my call function").displayCall()
 caller2 = Call("Justin Beiber", "(206) 236-4567", "Calling Mommie").displayCall()
 caller3 = Call("Steph Curry", "(958) 666-7575", "Calling Game 7").displayCall()
