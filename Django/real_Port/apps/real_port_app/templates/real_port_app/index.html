@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    <style media="screen">
+      h1{
+        text-align: center;
+        margin: 30px;
+        margin-bottom: 10px;
+      }
+      h2{
+        text-align: center;
+      }
+      .group{
+        display: inline-block;
+        width: 20%;
+        margin: 10px;
+        text-align: center;
+        vertical-align: top;
+      }
+      .group1{
+        display: inline-block;
+        width: 20%;
+        margin: 10px;
+        margin-left: 200px;
+        text-align: center;
+        vertical-align: top;
+      }
+      a{
+        color: blue;
+        text-decoration: underline;
+      }
+      .detail{
+        margin: 10px;
+        width: 95%;
+        height: 150px;
+        border: 3px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hi, I'm {{ user.first_name }} {{ user.last_name }}</h1>
+    <h2>Welcome to My Portfolio</h2>
+    <div class="group1">
+      <a href="/projects">Projects</a>
+      <div class="detail">
+        <p>I have a variety of projects both personal and contract.  They are built using Python, Swift, and JavaScript.</p>
+      </div>
+    </div>
+    <div class="group">
+      <a href="/about">About Me</a>
+      <div class="detail">
+        <p>A little about my background and why I do waht I do.</p>
+      </div>
+    </div>
+    <div class="group">
+      <a href="/testimonials">Testimonials</a>
+      <div class="detail">
+        <p>What my clients and mentors have to say about my projects and work ethic.</p>
+      </div>
+    </div>
+  </body>
+</html>
