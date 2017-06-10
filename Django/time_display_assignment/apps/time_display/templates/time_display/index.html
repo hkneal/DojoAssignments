@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'time_display/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <div class="intro">
+      <p>The current time and date:</p>
+    </div>
+    <div class="currentTime">
+      <h1> {{ time.current_Date }} </h1>
+      <h1> {{ time.current_Time }} </h1>
+    </div>
+  </body>
+</html>

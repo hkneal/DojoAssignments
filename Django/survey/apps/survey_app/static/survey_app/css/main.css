@@ -1,0 +1,94 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+.formInput{
+  border: 3px solid black;
+  width: 500px;
+  height: 500px;
+  margin-left: calc(50% - 250px);
+  margin-top: 40px;
+}
+h3{
+  text-decoration: underline;
+  color: blue;
+  margin: 10px;
+}
+label{
+  margin-left: 20px;
+  display: inline-block;
+  width: 135px;
+}
+input{
+  width: 200px;
+  margin-top: 20px;
+  margin-left: 110px;
+  text-align: right;
+}
+select{
+  width: 205px;
+  margin-top: 20px;
+  margin-left: 110px;
+  text-align: right;
+}
+#id{
+  display: block;
+  width: 460px;
+  height: 70px;
+  border: 3px solid black;
+  margin-bottom: 10px;
+}
+.navigate{
+  width: 60px;
+  padding: 5px;
+  color: white;
+  background-color: blue;
+  box-shadow: 5px 5px black;
+  margin-left: calc(100% - 88px);
+  font-size: 10pt;
+}
+.navigateg{
+  width: 70px;
+  padding: 5px;
+  color: white;
+  background-color: blue;
+  box-shadow: 5px 5px black;
+  margin-left: 59%;
+  font-size: 10pt;
+}
+#comment{
+  width: 450px;
+  height: 100px;
+  border: 3px solid black;
+  margin-left: 20px;
+  margin-top: 10px;
+  display: block;
+}
+/******* Results Page ********/
+.counter{
+  border: 3px solid black;
+  width: 400px;
+  height: 60px;
+  background-color: lightgreen;
+  margin-top: 40px;
+  margin-left: calc(50% - 200px);
+}
+.counter p, .results p{
+  margin: 10px;
+}
+.results{
+  border: 3px solid black;
+  width: 400px;
+  height: 400px;
+  margin-top: 20px;
+  margin-left: calc(50% - 200px);
+  display: inline-block;
+}
+.title{
+  display: inline-block;
+  width: 150px;
+}
+.data{
+  display: inline-block;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Game Home Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninjaGold_app/css/ninja.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+      <h2 id="myGold">Your Gold:</h2>
+      <div class="purse">
+        {% if request.session.gold >= 0 %}
+          <p>{{ request.session.gold }}</p></div>
+        {% else %}
+          <p>0</p></div>
+        {% endif %}
+      <div class="tasks">
+        <div class="earnmethod">
+          <h1>Farm</h1>
+          <p>(earns 10-20 gold)</p>
+          <form class="earn" action="/process/farm" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+          </form>
+        </div>
+        <div class="earnmethod">
+          <h1>Cave</h1>
+          <p>(earns 5-10 gold)</p>
+          <form class="earn" action="/process/cave" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+          </form>
+        </div>
+        <div class="earnmethod">
+          <h1>House</h1>
+          <p>(earns 2-5 gold)</p>
+          <form class="earn" action="/process/house" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+          </form>
+        </div>
+        <div class="earnmethod">
+          <h1>Casino</h1>
+          <p>(earns/takes 0-50 gold)</p>
+          <form class="earn" action="/process/casino" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Find Gold!">
+          </form>
+        </div>
+      </div>
+      <h3>Activities:</h3>
+      <div class="activities">
+        {% for entry in request.session.log %}
+          {% if entry.earnedGold == True %}
+              <p id="earned"> {{ entry.logdata }} </p>
+          {% else %}
+                <p id="lost"> {{ entry.logdata }} </p>
+          {% endif %}
+        {% endfor %}
+      </div>
+  </body>
+</html>
