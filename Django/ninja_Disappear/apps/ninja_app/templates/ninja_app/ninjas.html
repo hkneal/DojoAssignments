@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Render Ninja Turtles Photos</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninja_app/css/ninja.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    {% if color %}
+      {% if color == 'blue' %}
+        <img src="{% static 'ninja_app/images/Ninjas/leonardo.jpg' %}" alt="">
+      {% elif color == 'orange' %}
+        <img src="{% static 'ninja_app/images/Ninjas/michelangelo.jpg' %}" alt="">
+      {% elif color == 'red' %}
+        <img src="{% static 'ninja_app/images/Ninjas/Raphael.jpg' %}" alt="">
+      {% elif color == 'purple' %}
+        <img src="{% static 'ninja_app/images/Ninjas/donatello.jpg' %}" alt="">
+      {% else %}
+        <img src="{% static 'ninja_app/images/Ninjas/notapril.jpg' %}" alt="">
+      {% endif %}
+    {% else %}
+      <img src="{% static 'ninja_app/images/Ninjas/leonardo.jpg' %}" alt="">
+      <img src="{% static 'ninja_app/images/Ninjas/michelangelo.jpg' %}" alt="">
+      <img src="{% static 'ninja_app/images/Ninjas/Raphael.jpg' %}" alt="">
+      <img src="{% static 'ninja_app/images/Ninjas/donatello.jpg' %}" alt="">
+    {% endif %}
+  </body>
+</html>
