@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'landscape_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <p>{{ message }}</p>
+    <h3>Welcome!  Enter any number between 1-50 as a url paramater, for example "/32"</h3>
+    {% if message %}
+      <div class="error">
+        <p>You must enter a number between 1 and 50!</p>
+      </div>
+    {% endif %}
+  </body>
+</html>

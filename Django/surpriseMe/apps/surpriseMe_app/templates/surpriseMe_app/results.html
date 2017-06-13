@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Result Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'surpriseMe_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <h1>Surprises:</h1>
+    <div class="results">
+      {% if value %}
+        {% for value in value %}
+          <h3 id='newValue'>{{ value }}</h3> 
+        {% endfor %}
+      {% endif %}
+    </div>
+  </body>
+</html>

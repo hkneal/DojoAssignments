@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Landscape Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'landscape_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    {% if isPrime == True %}
+      <img src="{% static 'landscape_app/images/Image 5-22-17 at 1.38 AM (16).jpg' %}" alt="tropical">
+    {% elif number >= 41 %}
+      <img src="{% static 'landscape_app/images/Image 5-22-17 at 1.38 AM (1).jpg' %}" alt="tropical">
+    {% elif number >= 31 %}
+      <img src="{% static 'landscape_app/images/free-vineyard-wallpaper-26361-27052-hd-wallpapers.jpeg' %}" alt="vineyard">
+    {% elif number >= 21 %}
+      <img src="{% static 'landscape_app/images/Image 5-22-17 at 1.38 AM (12).jpg' %}" alt="forest">
+    {% elif number >= 11 %}
+      <img src="{% static 'landscape_app/images/Image 5-22-17 at 1.38 AM (4).jpg' %}" alt="desert">
+    {% elif number >= 1 %}
+      <img src="{% static 'landscape_app/images/Image 5-22-17 at 1.38 AM (3).jpg' %}" alt="snow">
+    {% endif %}
+  </body>
+</html>
