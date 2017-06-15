@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Login and Registration Index Page for The Wall</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'wall_app/css/master.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to the CodingDojo Wall</h1>
+    </header>
+    {% if request.session.errorMessage %}
+      {% for message in request.session.errorMessage %}
+        <p class="error">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    {% if request.session.okMessage %}
+      {% for message in request.session.okMessage %}
+        <p class="ok">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  <div class="opening">
+    <h3>Please Login or Register</h3>
+    <h1>Login</h1>
+    <div class="loginDiv">
+      <form class="login" action="/login" method="post">
+        {% csrf_token %}
+        <label for="email">Email:</label>
+        <input type="text" name="email" value="">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="">
+        <br>
+        <input type="submit" value="Login">
+      </form>
+    </div>
+    <h1>Registration Form</h1>
+    <div class="registration">
+      <form class="register" action="/register" method="post">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" value="{{ request.session.first_name }}">
+        <br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" value="{{ request.session.last_name }}">
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" name="email" value="{{ request.session.email }}">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="{{ request.session.password }}">
+        <br>
+        <label for="">Confirm Password:</label>
+        <input type="password" name="confirm_password" value="{{ request.session.confirm_password }}">
+        <br>
+      </div>
+        <input id='submit' type="submit" value="Submit Form">
+      </form>
+    </div>
+  </body>
+</html>

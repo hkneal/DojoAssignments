@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+  </head>
+  <style media="screen">
+    h1{
+      margin: 20px;
+    }
+    .create{
+      margin: 10px;
+    }
+  </style>
+  <body>
+    <h1>Hello Hiram, Here is your list of Books and Authors:</h1>
+    <h1>Books:</h1>
+    {% for book in books %}
+      <h3>Book Title: {{ book.title }} Author: {{ book.author.first_name }} {{ book.author.last_name }}</h3>
+    {% endfor %}
+    <h1>Authors:</h1>
+    {% for author in authors %}
+      <h3>Author: {{ author.first_name }} {{ author.last_name }}</h3>
+    {% endfor %}
+    <div class="create">
+      <h1>Add a Book:</h1>
+      <form action="{% url 'add_Book' %}" method="post">
+        {% csrf_token %}
+        Title: <input type="text" name="title" value="">
+        Author: <select name="author">
+          {% for author in authors %}
+            <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+          {% endfor %}
+        </select>
+        Category: <select name="category">
+            <option value="Fiction (Military)">Fiction (Military)</option>
+            <option value="Fiction (Sci-Fy)">Fiction (Science Fiction)</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+        </select>
+        In Print: <select name="in_print">
+          <option value="True">True</option>
+          <option value="False">False</option>
+        </select>
+        <br>
+        <input type="submit" value="Add Book">
+      </form>
+      <h1>Add an Author:</h1>
+      <form action="{% url 'add_Author' %}" method="post">
+        {% csrf_token %}
+        First Name: <input type="text" name="first_name" value="">
+        Last Name: <input type="text" name="last_name" value="">
+        <br>
+        <input type="submit" value="Add Author">
+      </form>
+      <h1>Add an Author to a Book:</h1>
+      <form action="{% url 'add_Author_toBook' %}" method="post">
+        {% csrf_token %}
+        Title: <select name="title">
+          {% for book in books %}
+            <option value="{{ book.id }}">{{ book.title }}</option>
+          {% endfor %}
+        </select>
+        Author: <select name="author">
+          {% for author in authors %}
+            <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+          {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Add Author To Book">
+      </form>
+    </div>
+  </body>
+</html>
