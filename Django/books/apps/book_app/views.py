@@ -13,12 +13,13 @@ def index(request):
 
 def add_book(request):
     theAuthor = Author.objects.get(id=request.POST['author'])
-    Book.objects.create(
+    abook = Book.objects.create(
         title = request.POST['title'],
-        author = theAuthor,
+        # author = theAuthor,
         category = request.POST['category'],
         in_print = request.POST['in_print']
     )
+    abook.save()
     return redirect('/')
 
 def add_author(request):
@@ -29,7 +30,9 @@ def add_author(request):
     return redirect('/')
 
 def add_author_toBook(request):
+    #use this for ManyToManyField
     theAuthor = Author.objects.get(id=request.POST['author'])
     theBook = Book.objects.get(id=request.POST['title'])
     theBook.author.add(theAuthor)
+    theBook.save()
     return redirect('/')

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Comments Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'course_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <h2>Here are the comments for this course:</h2>
+    <div class="labels">
+      <p>Name:</p>
+      <p>Description:</p>
+    </div>
+    <div class="data">
+      <h5>{{ course.course_name }}</h5>
+      <p>{{ course.description.description }}</p>
+      <h5>Comments:</h5>
+      {% for comment in course.comment_set.all %}
+        <p>{{ comment.comment }}</p>
+      {% endfor %}
+    </div><form class="addComment" action="{% url 'add_comment' course.id %}" method="post">
+      {% csrf_token %}
+      <label class="labels" for="comment">Comment:</label>
+      <input id="largeTextbox" type="textarea" name="comment" value="">
+      <input id="comments" type="submit" value="Add Comment">
+    </form>
+    <form class="buttons" action="/" method="post">
+      {% csrf_token %}
+      <input id="comments" type="submit" name="" value="Go Back">
+    </form>
+  </body>
+</html>

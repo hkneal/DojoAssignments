@@ -1,0 +1,104 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    margin: 20px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+td, th {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+h2{
+  margin: 20px;
+  margin-left: 60px;
+}
+label{
+  display: inline-block;
+  width: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+input{
+  border: 2px solid black;
+  height: 20px;
+  width: 300px;
+}
+.addCourse{
+  margin: 20px;
+  margin-left: 60px;
+  width: 465px;
+}
+.labels{
+  margin: 20px;
+  margin-left: 60px;
+  width: 150px;
+  display: inline-block;
+}
+.comments{
+  margin: 20px;
+  margin-left: 60px;
+  width: 450px;
+  display: inline-block;
+}
+.data{
+  display: inline-block;
+  width: 465px;
+  vertical-align: top;
+  margin-top: 20px;
+  margin-right: 50%
+}
+.buttons{
+  display: inline-block;
+}
+#largeTextbox{
+  border: 2px solid black;
+  height: 80px;
+  width: 300px;
+}
+#add{
+  width: 80px;
+  background-color: green;
+  color: white;
+  box-shadow: 3px 3px black;
+  margin-left: calc(100% - 87px);
+  margin-top: 10px;
+}
+#no{
+  width: 45px;
+  background-color: lightgray;
+  box-shadow: 3px 3px black;
+  margin-left: 120px;
+  margin-top: 10px;
+  display: inline-block;
+}
+#delete{
+  width: 250px;
+  background-color: red;
+  color: white;
+  box-shadow: 3px 3px black;
+  margin-top: 10px;
+  margin-left: 20px;
+  display: inline-block;
+}
+#comments{
+  width: 95px;
+  background-color: lightblue;
+  box-shadow: 3px 3px black;
+  margin-left: 233px;
+  margin-top: 10px;
+  display: block;
+}

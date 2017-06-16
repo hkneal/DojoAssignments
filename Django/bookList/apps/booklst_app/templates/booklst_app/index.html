@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page for Book List</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'booklst_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    {% if books %}
+      <table>
+          <tr>
+            <th>id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+          </tr>
+      {% for book in books %}
+          <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.category }}</td>
+          </tr>
+      {% endfor %}
+      </table>
+    {% endif %}
+    <div class="create">
+      <h1>Add a Book:</h1>
+      <form action="{% url 'add_Book' %}" method="post">
+        {% csrf_token %}
+        <label id="title" for="title">Title:</label>
+        <input id="titleArea" type="textarea" name="title" value="">
+        <div class="bookdetail">
+          <label for="category">Category: </label>
+          <input type="textarea" name="category" value="">
+        </div>
+        <div class="bookdetail">
+          <label for="author">Author: </label>
+          <input type="textarea" name="author" value="">
+        </div>
+        <br>
+        <input id="submit" type="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+</html>

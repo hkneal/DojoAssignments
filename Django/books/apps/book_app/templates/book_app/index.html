@@ -13,14 +13,22 @@
     }
   </style>
   <body>
-    <h1>Hello Hiram, Here is your list of Books and Authors:</h1>
-    <h1>Books:</h1>
+    <h1>Hello Hiram, Here is your list of Authors and their books:</h1>
+    <!-- <h1>Books:</h1>
     {% for book in books %}
-      <h3>Book Title: {{ book.title }} Author: {{ book.author.first_name }} {{ book.author.last_name }}</h3>
-    {% endfor %}
+      <h5>Book Title: {{ book.title }} </h5>
+      <p>{{ book.author_set.all }}</p>
+      <p>{{ author.book_set.all }}</p>
+        {% for author in book.author_set.all %}
+          <h5>Authors: {{ author.first_name }} {{ author.last_name }}</h5>
+        {% endfor %}
+    {% endfor %} -->
     <h1>Authors:</h1>
     {% for author in authors %}
       <h3>Author: {{ author.first_name }} {{ author.last_name }}</h3>
+        {% for book in author.book_set.all %}
+          <h5>Book title: "{{ book.title  }}" </h5>
+        {% endfor %}
     {% endfor %}
     <div class="create">
       <h1>Add a Book:</h1>

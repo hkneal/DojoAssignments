@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page for Courses</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'course_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <h2>Add a new course</h2>
+    <div class="addCourse" >
+      <form action="{% url 'add_course' %}" method="post">
+        {% csrf_token %}
+        <label for="course_name">Name:</label>
+        <input type="textarea" name="course_name" value="">
+        <label for="description">Description:</label>
+        <input id="largeTextbox" type="textarea" name="description" value="">
+        <input id="add" type="submit" value="Add">
+      </form>
+    </div>
+    <h2>Courses</h2>
+    {% if courses %}
+      <table>
+        <tr>
+          <th>Course Name</th>
+          <th>Description</th>
+          <th>Date Added</th>
+          <th>Actions</th>
+        </tr>
+      {% for course in courses %}
+        <tr>
+          <td><a href="/courses/comment_page/{{ course.id }}">{{ course.course_name }}</a></td>
+          <td>{{ course.description.description }}</td>
+          <td>{{ course.created_at }}</td>
+          <td>
+            <a href="/courses/comment_page/{{ course.id }}">Comment</a>
+            <a href="/courses/destroy/{{ course.id }}">Remove</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </table>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,58 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    margin: 20px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+td, th {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+h1{
+  text-align: center;
+}
+#titleArea{
+  width: 95%;
+  height: 20px;
+  margin: 20px;
+  margin-top: 10px;
+  border: 2px solid black;
+}
+#title{
+  margin: 20px;
+}
+label{
+  margin-bottom: 20px;
+}
+input{
+width: calc(100% - 35px);
+border: 2px solid black;
+height: 20px;
+margin-top: 10px;
+}
+.bookdetail{
+  width: calc(50% - 43px);
+  display: inline-block;
+  margin: 20px;
+  margin-bottom: 20px;
+}
+#submit{
+  width: 90px;
+  box-shadow: 5px 5px black;
+  background-color: white;
+  margin: 20px;
+}
