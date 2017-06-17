@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Success Page!</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'loginreg_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <div class="theDiv">
+      <h1>Success! Welcome, {{ user.user.first_name }}</h1>
+      <br>
+      <p class="success">{{ user.message }}</p>
+  </div>
+  <form action="/" method="get">
+    {% csrf_token %}
+    <input class="submit" name="submit" type="submit" value="Go Back">
+  </form>
+  </body>
+</html>

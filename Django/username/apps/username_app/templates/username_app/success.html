@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'username_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    {% if username %}
+      <h3 class="success">The username you entered, {{ username.theuser.username }} is valid. Thank You!</h3>
+    {% endif %}
+    {% if users %}
+    <h3 id="underline">Usernames Entered:</h3>
+      <div class="usernames">
+        {% for user in users %}
+          <p>{{ user.username }}     {{ user.created_at }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <form class="input" action="/" method="get">
+      {% csrf_token %}
+      <input type="submit" value="Go Back">
+    </form>
+  </body>
+</html>
