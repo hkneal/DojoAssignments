@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    {% if error %}
+      <h3 class="error">{{ error.error }}</h3>
+    {% endif %}
+    <h1>Welcome!</h1>
+    <h1 class="imprint">Register</h1>
+    <div class="regDiv">
+      <form action="{% url 'login_reg' %}" method="post">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" value="{{ request.session.first_name }}">
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" value="{{ request.session.last_name }}">
+        <label for="email">Email:</label>
+        <input type="text" name="email" value="{{ request.session.email }}">
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="{{ request.session.password }}">
+        <p>*Password should be at least 8 characters</p>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" value="{{ request.session.confirm_password }}">
+        <input class="submit" name="submit" type="submit" value="Register">
+      </form>
+    </div>
+    <h1 class="imprint">Log In</h1>
+    <div class="loginDiv">
+        <form action="{% url 'login_reg' %}" method="post">
+          {% csrf_token %}
+          <label for="email">Email:</label>
+          <input type="text" name="email" value="{{ request.session.email }}">
+          <label for="password">Password:</label>
+          <input type="password" name="password" value="{{ request.session.password }}">
+          <input class="submit" name="submit" type="submit" value="Login">
+        </form>
+    </div>
+  </body>
+</html>

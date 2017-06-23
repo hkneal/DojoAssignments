@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Use this for Star Ratings</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <form class="" action="/ninjas/blue" method="post">
+      {% csrf_token %}
+      <fieldset class="rating">
+          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+          <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+          <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+          <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+          <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+          <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+      </fieldset>
+          <input type="submit" value="Submit">
+    </form>
+    <!-- Other side of view
+    {% if number|length >= 1 %}
+      <fieldset class=rated>
+      {% for x in number %}
+        <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star5" title="Awesome - 5 stars"></label>
+      {% endfor %}
+        {% if remainder %}
+          <input type="radio" id="starhalf" name="rating" value="5" /><label class = "halfs" for="star5" title="Awesome - 5 stars"></label>
+        {% endif %}
+      </fieldset>
+    {% else %}
+      <fieldset class=rated>
+        <input type="radio" id="starhalf" name="rating" value="5" /><label class = "halfs" for="star5" title="Awesome - 5 stars"></label>
+      </fieldset>
+    {% endif %} -->
+
+    <!-- in view:************
+    number = float(request.POST['rating'])
+      if number >= 1:
+          wholenum = math.floor(number)
+          remainum = number - wholenum
+          if remainum > 0:
+              remainder = ['*']
+          else:
+              remainder = []
+          whole = []
+          for i in range(0, int(wholenum)):
+              whole.append('*')
+      else:
+          whole = []
+          remainder = ['*']
+
+      context = {
+          "number" : whole,
+          "remainder": remainder
+      } -->
+  </body>
+</html>
