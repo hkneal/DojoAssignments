@@ -66,63 +66,32 @@ class ReviewManager(models.Manager):
             return {
                 'review' : review
             }
+
 class UserManager(models.Manager):
     def register(self, postData):
         password = postData['password']
-        if not validateName(postData['first_name']):
-            return { 'error' : 'First name should be greater than 2 characters and less than 45 characters and should not contain numbers or symbols'}
-        elif not validateName(postData['last_name']):
-            return { 'error' : 'Last name should be greater than 2 characters and less than 45 characters and should not contain numbers or symbols'}
-        elif not EMAIL_REGEX.match(postData['email']):
-            return { 'error' : 'Please enter a valid email address'}
-        elif len(postData['email']) < 7:
-            return { 'error' : 'Email address must contain at least 7 characters in a proper email format eg. a@a.net '}
-        elif UserName.objects.filter(email = postData['email']).count() >= 1:
-            return { 'error' : 'This email address is already registered!'}
-        elif len(password) < 8:
-            return { 'error' : 'Passwords connot be empty and must contain as least 8 characters/numbers'}
-        elif not hasNumbers(password):
-            return { 'error' : "Password should contain at least 1 number!"}
-        elif not hasUpper(password):
-            return { 'error' : "Password should contain at least 1 Uppercase letter!"}
-        elif password != postData['confirm_password']:
-            return { 'error' : 'Password and Confirm Password must match'}
-        else:
-            hashed_pw = bcrypt.hashpw(password.encode(encoding="utf-8", errors="strict"), bcrypt.gensalt())
-            user = UserName.objects.create(
-                first_name = postData['first_name'],
-                last_name = postData['last_name'],
-                email = postData['email'],
-                password = hashed_pw
-            )
-            return {
-                'user':user,
-                'message': "Thank You For Registering!"
-                }
+        hashed_pw = bcrypt.hashpw(password.encode(encoding="utf-8", errors="strict"), bcrypt.gensalt())
+        user = UserName.objects.create(
+            first_name = postData['first_name'],
+            last_name = postData['last_name'],
+            email = postData['email'],
+            password = hashed_pw
+        )
+        return {
+            'user':user,
+            'message': "Thank You For Registering!"
+            }
 
     def login(self, postData):
         password = postData['password']
-        if not EMAIL_REGEX.match(postData['email']):
-            return { 'error' : 'Please enter a valid email address'}
-        elif len(postData['email']) < 7:
-            return { 'error' : 'Email address must contain at least 7 characters in a proper email format eg. a@a.net '}
-        elif UserName.objects.filter(email = postData['email']).count() < 1:
-            return { 'error' : 'You must first register!'}
-        elif len(postData['password']) < 8:
-            return { 'error' : 'Passwords connot be empty and must contain as least 8 characters/numbers'}
-        elif not hasNumbers(password):
-            return { 'error' : "Password should contain at least 1 number!"}
-        elif not hasUpper(password):
-            return { 'error' : "Password should contain at least 1 Uppercase letter!"}
-        else:
-            user = UserName.objects.get(email = postData['email'])
-            hashed_pw = user.password
-            if bcrypt.hashpw(password.encode(encoding="utf-8", errors="strict"), hashed_pw.encode(encoding="utf-8", errors="strict")) != hashed_pw:
-                return { 'error' : 'Incorrect password!'}
-            return {
-                'user':user,
-                'message' : "You Have Successfully Logged In!"
-                }
+        user = UserName.objects.get(email = postData['email'])
+        hashed_pw = user.password
+        if bcrypt.hashpw(password.encode(encoding="utf-8", errors="strict"), hashed_pw.encode(encoding="utf-8", errors="strict")) != hashed_pw:
+            return { 'error' : 'Incorrect password!'}
+        return {
+            'user':user,
+            'message' : "You Have Successfully Logged In!"
+            }
 
 # Create your models here.
 class UserName(models.Model):

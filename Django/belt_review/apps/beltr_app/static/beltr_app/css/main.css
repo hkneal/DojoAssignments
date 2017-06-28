@@ -23,6 +23,11 @@ textarea{
   color: blue;
   text-decoration: underline;
 }
+.regDiv a, .loginDiv a{
+  color: inherit;
+  color: red;
+  text-decoration: underline;
+}
 .regDiv, .loginDiv{
   margin: 20px;
   margin-top: 48px;
@@ -67,6 +72,9 @@ textarea{
   border: 3px solid black;
   margin: 80px;
   width: 450px;
+}
+.errorlist{
+display: none;
 }
 .addBook{
   margin: 40px;

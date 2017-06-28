@@ -1,11 +1,80 @@
+from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from .models import UserName, Author, Book, Review
+from .forms import login_form, register_form
 import math
 # Create your views here.
 
-
 def index(req):
-    return render(req, 'beltr_app/index.html')
+    context = {
+        'login_form' : login_form(),
+        'register_form' : register_form()
+    }
+    return render(req, 'beltr_app/index.html', context)
+
+def register(req):
+    if req.method == 'POST':
+        form = register_form(req.POST)
+        if form.is_valid():
+            print "Valid Registration"
+            postData = {
+                'first_name' : form.cleaned_data['first_name'],
+                'last_name' : form.cleaned_data['last_name'],
+                'email' : form.cleaned_data['email'],
+                'password' : form.cleaned_data['password']
+                }
+            user = UserName.objects.register(postData)
+            recent_reviews = Review.objects.all().order_by('-created_at')
+            all_books = Book.objects.all().order_by('created_at')
+            #if we want to restrict to one review per user
+            reviewlst = Review.objects.filter(user=user['user'].id).values_list("book", flat=True)
+            context = {
+                'user' : user['user'],
+                'message' : user['message'],
+                'recent_reviews': recent_reviews,
+                'all_books' : all_books,
+                'reviewlst': reviewlst
+            }
+            return render(req, 'beltr_app/books.html', context)
+            # form.clean_email()
+        else:
+            context = {
+                'login_form' : login_form(),
+                'register_form' : form
+            }
+            return render(req, 'beltr_app/index.html', context)
+    else:
+        return redirect('/')
+
+def login(req):
+    if req.method == 'POST':
+        form = login_form(req.POST)
+        if form.is_valid():
+            postData = {
+                'password' : form.cleaned_data['password'],
+                'email' : form.cleaned_data['email']
+                }
+            user = UserName.objects.login(postData)
+            recent_reviews = Review.objects.all().order_by('-created_at')
+            all_books = Book.objects.all().order_by('created_at')
+            #if we want to restrict to one review per user
+            reviewlst = Review.objects.filter(user=user['user'].id).values_list("book", flat=True)
+            context = {
+                'user' : user['user'],
+                'message' : user['message'],
+                'recent_reviews': recent_reviews,
+                'all_books' : all_books,
+                'reviewlst': reviewlst
+            }
+            return render(req, 'beltr_app/books.html', context)
+        else:
+            context = {
+                'login_form' : form,
+                'register_form' : register_form()
+            }
+            return render(req, 'beltr_app/index.html', context)
+    else:
+        return redirect('/')
 
 def home(req, id):
     user = UserName.objects.get(id=id)
@@ -19,51 +88,6 @@ def home(req, id):
         'reviewlst': reviewlst
     }
     return render(req, 'beltr_app/books.html', context)
-
-def login_reg(req):
-    if req.method == 'POST':
-        if req.POST['submit'] == 'Register':
-            req.session['first_name'] = req.POST['first_name']
-            req.session['last_name'] = req.POST['last_name']
-            req.session['password'] = req.POST['password']
-            req.session['confirm_password'] = req.POST['confirm_password']
-            req.session['email'] = req.POST['email']
-            postData = {
-                'first_name' : req.session['first_name'],
-                'last_name' : req.session['last_name'],
-                'password' : req.session['password'],
-                'confirm_password' : req.session['confirm_password'],
-                'email' : req.session['email']
-                }
-            user = UserName.objects.register(postData)
-            #in the case of Log In
-        else:
-            req.session['password'] = req.POST['password']
-            req.session['email'] = req.POST['email']
-            postData = {
-                'password' : req.session['password'],
-                'email' : req.session['email']
-                }
-            user = UserName.objects.login(postData)
-        if 'error' in user:
-            context = { 'error' : user}
-            return render(req, 'beltr_app/index.html', context)
-        #Pass the login or register message in user and pass user through session
-        else:
-            recent_reviews = Review.objects.all().order_by('-created_at')
-            all_books = Book.objects.all().order_by('created_at')
-            #if we want to restrict to one review per user
-            reviewlst = Review.objects.filter(user=user['user'].id).values_list("book", flat=True)
-            context = {
-                'user' : user['user'],
-                'message' : user['message'],
-                'recent_reviews': recent_reviews,
-                'all_books' : all_books,
-                'reviewlst': reviewlst
-            }
-            return render(req, 'beltr_app/books.html', context)
-    else:
-        return redirect('/')
 
 def book_add(req, id):
     if req.method == 'POST':

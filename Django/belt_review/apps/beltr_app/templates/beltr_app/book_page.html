@@ -2,12 +2,11 @@
 <html lang='en-US'>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Books Page</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
   </head>
   <body>
-    <body>
     <div class="header">
       <h1 id='welcome'>{{ book.title }}!</h1>
       <a href="{% url 'home_url' user.id %}">Home</a>

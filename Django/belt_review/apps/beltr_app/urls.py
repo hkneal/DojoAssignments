@@ -2,7 +2,8 @@ from django.conf.urls import url
 from . import views
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^books/login$', views.login_reg, name='login_reg'),
+    url(r'^books/login$', views.login, name='login'),
+    url(r'^books/register$', views.register, name='register'),
     url(r'^books/(?P<id>\d+)$', views.home, name='home_url'),
     url(r'^books/add/(?P<id>\d+)$', views.book_add, name='add_book'),
     url(r'^books/(?P<id>\d+)/(?P<bid>\d+)$', views.book_page, name='book_page'),
