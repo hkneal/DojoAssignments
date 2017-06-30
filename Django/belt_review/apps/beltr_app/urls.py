@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^books/add/(?P<id>\d+)$', views.book_add, name='add_book'),
     url(r'^books/(?P<id>\d+)/(?P<bid>\d+)$', views.book_page, name='book_page'),
     url(r'^books/(?P<id>\d+)/(?P<bid>\d+)/add_review$', views.add_review, name='add_review'),
-    url(r'^books/(?P<id>\d+)/user$', views.user_page, name='user_page'),
+    url(r'^books/(?P<id>\d+)/(?P<rid>\d+)/user$', views.user_page, name='user_page'),
     url(r'^books/(?P<id>\d+)/delete$', views.delete_review, name='delete_review'),
     url(r'^logout$', views.logout, name='logout')
 ]

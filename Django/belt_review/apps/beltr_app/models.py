@@ -22,11 +22,17 @@ def hasUpper(strInput):
 
 class AuthorManager(models.Manager):
     def verify(self, postData):
-        print postData['author_first_name'], postData['author_last_name']
-        if not validateName(postData['author_first_name']):
+        first_name = postData['author_first_name']
+        last_name = postData['author_last_name']
+        if not validateName(first_name):
             return { 'error' : "Author's First name should be greater than 2 characters and less than 45 characters and should not contain numbers or symbols"}
-        elif not validateName(postData['author_last_name']):
+        elif not validateName(last_name):
             return { 'error' : "Author's Last name should be greater than 2 characters and less than 45 characters and should not contain numbers or symbols"}
+        elif Author.objects.filter(first_name=first_name, last_name=last_name).exists():
+            author = Author.objects.get(first_name=first_name, last_name=last_name)
+            return {
+                'author': author
+            }
         else:
             author = Author.objects.create(
                 first_name = postData['author_first_name'],

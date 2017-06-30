@@ -8,14 +8,14 @@
   </head>
   <body>
     <div class="header">
-      <h1 id='welcome'>User Alias:  {{ user.first_name }}</h1>
+      <h1 id='welcome'>User Alias:  {{ reviewer.first_name }}</h1>
       <a href="{% url 'home_url' user.id %}">Home</a>
       <a href="{% url 'add_book' user.id %}">Add Book and Review</a>
       <a href="{% url 'logout' %}">Logout</a>
     </div>
-    <h3>Name:  {{ user.first_name }} {{ user.last_name }}</h3>
-    <h3>Email:  {{ user.email }}</h3>
-    <h3>Total Reviews:  {{ user.reviews.all.count }}</h3>
+    <h3>Name:  {{ reviewer.first_name }} {{ reviewer.last_name }}</h3>
+    <h3>Email:  {{ reviewer.email }}</h3>
+    <h3>Total Reviews:  {{ reviewer.reviews.all.count }}</h3>
     <br><br><br>
     <h3>Posted Reviews on the following books:</h3>
     <div class="books">

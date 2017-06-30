@@ -227,11 +227,13 @@ def add_review(req, id, bid):
     else:
         return redirect('/')
 
-def user_page(req, id):
+def user_page(req, id, rid):
     user = UserName.objects.get(id=id)
-    bookReviews = Review.objects.filter(user=user.id).order_by('-created_at')
+    reviewUser = UserName.objects.get(id=rid)
+    bookReviews = Review.objects.filter(user=reviewUser.id).order_by('-created_at')
     context = {
         'reviews' : bookReviews,
+        'reviewer' : reviewUser,
         'user' : user
     }
     return render(req, 'beltr_app/user_page.html', context)

@@ -49,7 +49,7 @@
       </div>
       <br>
       <div class="reviewInfo">
-        <p id="theReview"><a id="reviewer" href="{% url 'user_page' review.user.id %}">{{review.user.first_name}}</a> says {{review.review}}</p>
+        <p id="theReview"><a id="reviewer" href="{% url 'user_page' user.id review.user.id %}">{{review.user.first_name}}</a> says {{review.review}}</p>
         <br>
         <p id="inline">Posted on {{review.created_at}}</p>
         {% if review.user.id == user.id %}
