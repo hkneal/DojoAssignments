@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/master.css">
+  </head>
+  <body>
+    <div class="quotes">
+      <h1>Here are the awesome quotes!</h1>
+      <% if(typeof(quotes) != 'undefined') { %>
+        <% for(const quoteObject of quotes) { %>
+              <p>"<%= quoteObject.quote %></p>
+              <p class="indent">-<%= quoteObject._user.name.first %> <%= quoteObject._user.name.last %> at <%= quoteObject.createdAt %></p>
+              <hr>
+        <% } %>
+      <% } %>
+    </div>
+    <div class="enterQuote">
+        <% if(typeof(session) != 'undefined') { %>
+        <% } %>
+      <form action="/quote/<%= session %>" method="post">
+        <label for="quote">Your Quote:</label>
+        <textarea name="quote" rows="8" cols="40"></textarea>
+        <input class="button" type="submit" value="Add my quote!">
+      </form>
+    </div>
+    <form action="/logout" method="get">
+      <input class="button" type="submit" value="Logout">
+    </form>
+  </body>
+</html>

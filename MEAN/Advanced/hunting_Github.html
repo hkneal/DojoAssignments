@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Hunting Github</title>
+    <!-- {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8"> -->
+    <script   src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script>
+    console.log($());
+    $(document).ready(function(){
+      console.log("Done loading JQuery");
+    });
+    // $.get("https://api.github.com/users/hkneal", displayName)
+    // // Notice that displayName is a function that takes in 1 parameter (this is the data that comes back from the API)
+    // function displayName(data) {
+    //   console.log(data);
+    // }
+    </script>
+  </head>
+  <body>
+    <!-- <form class="" action="index.html" method="post">
+      {% csrf_token %}
+    </form> -->
+    <button type="button" id="displayName" name="button">Display Your Name</button>
+    <script type="text/javascript">
+      var button = document.getElementById("displayName")
+      button.addEventListener("click", getName);
+      function getName(){
+        $.get("https://api.github.com/users/hkneal", displayName)
+      }
+      function displayName(data) {
+        // console.log(data.name);
+        document.getElementById("name").innerHTML = data.name;
+      }
+    </script>
+    <p id="name"></p>
+  </body>
+</html>

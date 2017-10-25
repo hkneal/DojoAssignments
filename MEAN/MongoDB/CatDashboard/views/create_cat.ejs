@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Create a new cat</title>
+    <link rel="stylesheet" href="/master.css">
+  </head>
+  <body>
+    <h1>Create a new cat!</h1>
+    <div class="enterChanges">
+      <form action="/cat" method="post">
+        <label for="name">Cat's Name:</label>
+        <input type="text" name="name" value="">
+        <label for="type">Type of Cat:</label>
+        <input type="text" name="type" value="">
+        <label for="age">Cat's Age:</label>
+        <input type="number" name="age" value="">
+        <label for="country">Cat's country of origin:</label>
+        <input type="text" name="country" value="">
+        <label for="fact">Instersting Fact about this cat:</label>
+        <textarea name="fact" rows="8" cols="40"></textarea>
+        <input class="button" type="submit" value="Add this Cat">
+      </form>
+      <hr>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </body>
+</html>

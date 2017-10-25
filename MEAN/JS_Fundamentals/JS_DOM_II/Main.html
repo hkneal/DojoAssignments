@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<title></title>
+  <style type="text/css">
+  /* border and styling for table data */
+  td{
+    border: 1px solid silver;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+  }
+  /* background and bolding for the first element of our rows and data */
+  td:first-child, tr:first-child{
+    background-color: silver;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div id="target"></div>
+</body>
+<script type="text/javascript">
+// define draw table
+function draw_table(){
+  // create our html string, open up the table tag
+  let firstElement = true;
+  let html_string = "<table>";
+  let nums = 0;
+  // outer loop
+  for(let i = 0; i<13; i++){
+    // create a row for each iteration of the outer loop
+    html_string += "<tr>";
+    // inner loop
+    for(let j = 0; j<13; j++){
+      // calculate our number
+      if(firstElement){
+        let data = "<td>" + "x" + "</td>";
+        html_string += data;
+        firstElement = false;
+      }
+      else{
+        if(i==0){
+          if(j==0){
+            nums = 1;
+          }
+          else {
+            nums = 1 * j+1;
+          }
+        }
+        else if(j==0){
+          nums = i *1;
+        }
+        else{
+          nums = i * j;
+        }
+        let data = "<td>" + nums + "</td>";
+        html_string += data;
+      }
+    }
+    // after the inner loop, we cap our table rows
+    html_string += "</tr>";
+  }
+  // after the outer loop, we cap our entire table
+  html_string += "</table>";
+  document.getElementById("target").innerHTML = html_string;
+}
+draw_table();
+</script>
+</html>

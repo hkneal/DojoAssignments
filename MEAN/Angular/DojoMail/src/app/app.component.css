@@ -1,0 +1,12 @@
+.table {
+    margin: 20px;
+}
+
+.table th {
+    text-align: left;
+    padding-right: 20px;
+}
+
+.td {
+    pad: 10px;
+}

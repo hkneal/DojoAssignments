@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>View a specific cat's details</title>
+    <link rel="stylesheet" href="/master.css">
+  </head>
+  <body>
+    <h1><%= catObject.name %></h1>
+    <div class="wrapper">
+      <p> Cat Type: <%= catObject.type %></p>
+      <p> Cat Age: <%= catObject.age %></p>
+      <p> An interesting fact about <%= catObject.name %> - <%= catObject.fact %></p>
+      <p> Country of origin: <%= catObject.country %></p>
+      <div class="buttonDiv1">
+        <form action="/cat/edit/<%= catObject.id %>" method="get">
+          <input class="button" type="submit" value="Edit Cat">
+        </form>
+      </div>
+      <div class="buttonDiv">
+        <form action="/cat/destroy/<%= catObject.id %>" method="post">
+          <input class="button" type="submit" value="Delete Cat">
+        </form>
+      </div>
+      <hr>
+      <nav>
+        <a href="/">Home</a>
+      </nav>
+    </div>
+  </body>
+</html>

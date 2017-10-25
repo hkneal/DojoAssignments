@@ -1,0 +1,19 @@
+.header {
+    width: 600px;
+    text-align: center;
+    margin-left: 25%;
+}
+
+a {
+    color: inherit;
+    color: blue;
+    text-decoration: underline;
+}
+
+a:active {
+    font-weight: bold;
+}
+
+a:hover {
+    font-weight: bold;
+}

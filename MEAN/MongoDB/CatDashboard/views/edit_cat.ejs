@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit a cat</title>
+    <link rel="stylesheet" href="/master.css">
+  </head>
+  <body>
+    <h1>Update <%= catObject.name %></h1>
+    <div class="enterChanges">
+      <form action="/cat/<%= catObject.id %>" method="post">
+        <label for="name">Cat's Name:</label>
+        <input type="text" name="name" value="<%= catObject.name %>">
+        <label for="type">Type of Cat:</label>
+        <input type="text" name="type" value="<%= catObject.type %>">
+        <label for="age">Cat's Age:</label>
+        <input type="number" name="age" value="<%= catObject.age %>">
+        <label for="country">Cat's country of origin:</label>
+        <input type="text" name="country" value="<%= catObject.country %>">
+        <label for="fact">Instersting Fact about this cat:</label>
+        <textarea name="fact" rows="8" cols="40"><%= catObject.fact %></textarea>
+        <input class="button" type="submit" value="Submit Changes">
+      </form>
+      <hr>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+  </body>
+</html>

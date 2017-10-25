@@ -1,0 +1,23 @@
+label {
+    display: inline-block;
+    width: 120px;
+    margin-bottom: 5px;
+}
+
+#delete {
+    margin-top: 5px;
+    margin-left: 125px;
+    border: 3px solid black;
+    background-color: #CD2D2E;
+    color: white;
+    box-shadow: 3px 3px 3px black;
+}
+
+#update {
+    margin-top: 5px;
+    margin-left: 10px;
+    border: 3px solid black;
+    background-color: #307BE1;
+    color: white;
+    box-shadow: 3px 3px 3px black;
+}

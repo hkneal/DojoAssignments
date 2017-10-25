@@ -1,0 +1,49 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+h1{
+  margin: 20px;
+  margin-left: 90px;
+}
+.enterQuote{
+  margin-left: 120px;
+  width: 397px;
+}
+label{
+  width: 135px;
+  display: inline-block;
+}
+textarea{
+  margin-top: 10px;
+  vertical-align: top;
+}
+.quotes{
+  margin-left: 60px;
+}
+p{
+  margin-top: 10px;
+}
+h1{
+  margin-left: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.button{
+  display: inline-block;
+  margin-left: 40px;
+  margin-top: 20px;
+  box-shadow: 3px 3px 2px black;
+}
+.buttonDiv{
+  display: inline-block;
+}
+.buttonDiv1{
+  display: inline-block;
+  margin-left: 190px;
+}
+.indent{
+  margin-left: 40px;
+  margin-bottom: 10px;
+}

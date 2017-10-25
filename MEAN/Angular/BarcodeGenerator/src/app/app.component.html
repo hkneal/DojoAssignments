@@ -1,0 +1,9 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:left; margin: 20px">
+    <h1>
+        {{title}}!
+    </h1>
+</div>
+<div style="margin: 20px; display: flex;">
+    <div *ngFor='let index of colorIndex; ' class="barcode" [ngStyle]="{'background-color': index }"></div>
+</div>

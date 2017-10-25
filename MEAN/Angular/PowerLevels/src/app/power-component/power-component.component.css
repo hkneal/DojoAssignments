@@ -1,0 +1,25 @@
+fieldset {
+    margin: 20px;
+    padding: 10px;
+    font: sans-serif;
+    border: 2px solid black;
+}
+
+.button {
+    box-shadow: 3px 3px 3px black;
+}
+
+.allComponents {
+    margin-top: 80px;
+}
+
+.component {
+    width: calc(33.3% - 30px);
+    height: 150px;
+    background-color: #FFF9E7;
+    /* border: 3px solid black; */
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+    font: sans-serif;
+}

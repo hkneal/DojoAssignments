@@ -1,0 +1,31 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+#counter{
+  margin: 20px;
+}
+#reset_button{
+  background-color: red;
+  border: 3px solid #000;
+  font-size: 8pt;
+  color: white;
+  margin: 10px;
+  margin-left: 30%;
+  padding: 5px;
+  box-shadow: 3px 3px 2px black;
+}
+.center{
+  margin: 40px;
+  margin-left: 90px;
+}
+#add_count{
+  border-radius: 10px;
+  background-color: blue;
+  border: 3px solid #000;
+  font-size: 15pt;
+  color: white;
+  margin: 10px;
+  padding: 20px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Front Page</title>
+    <link rel="stylesheet" href="master.css">
+  </head>
+  <body>
+    <div class="main">
+      <h1>Welcome to the Great Number Game!</h1>
+      <h3>I am thinking of a number between 1 and 100</h3>
+      <h3>Take a guess!</h3>
+      <% if(postData['guessedLow']){ %>
+        <div class="wrongGuess">
+          <h3>You Guessed: <%= postData.numGuessed %></h3>
+          <h1>Too Low!</h1>
+        </div>
+      <% }%>
+      <% if(postData['guessedHigh']){ %>
+        <div class="wrongGuess">
+          <h3>You Guessed: <%= postData.numGuessed %></h3>
+          <h1>Too High!</h1>
+        </div>
+      <% } %>
+      <% if(postData['guessedRight']){ %>
+        <div class="rightGuess">
+          <h1> YEAH!! <%= postData.numGuessed %> Was the Number!</h1>
+          <form class="redo" action="/" method="get">
+            <input type="submit" name="redo" value="Play Again">
+          </form>
+        </div>
+      <% } %>
+      <% if(!postData['guessedRight']){ %>
+        <form class="takeGuess" action="/checkGuess" method="post">
+          <input type="text" name="numGuessed">
+          <input type="submit" name="guess" value="Submit">
+        </form>
+      <% } %>
+    </div>
+  </body>
+</html>

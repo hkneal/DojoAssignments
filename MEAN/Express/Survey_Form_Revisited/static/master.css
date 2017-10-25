@@ -1,0 +1,52 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+#formInput{
+  border: 3px solid #000;
+  margin-left: 25%;
+  margin-top: 40px;
+  padding: 10px;
+  width: 498px;
+}
+#updated_message{
+  border: 3px solid #000;
+  margin-left: 25%;
+  margin-top: 40px;
+  padding: 10px;
+  width: 498px;
+  background-color: lightgreen;
+  display: none;
+}
+.formLabel{
+  width: 260px;
+  display: inline-block;
+  margin-top: 5px;
+}
+.resultInfo{
+  width: 220px;
+  display: inline-block;
+}
+.formLabelComment{
+  width: 140px;
+  display: block;
+}
+.formLabelInput{
+  display: inline-block;
+  width: 220px;
+  margin: 5px;
+}
+.underline{
+  text-decoration: underline;
+}
+.info{
+  margin-left: 10px;
+}
+button{
+  width: 60px;
+  background-color: blue;
+  color: white;
+  box-shadow: 3px 3px black;
+  margin-left: calc(100% - 65px);
+}

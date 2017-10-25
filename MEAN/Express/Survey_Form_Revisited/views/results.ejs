@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Results Page</title>
+    <link rel="stylesheet" href="master.css">
+  </head>
+  <body>
+    <div id="formInput">
+      <h3 class="underline" >Submitted Information</h3>
+      <div class="info">
+        <p class="formLabel">Name:</p>
+        <p class="resultInfo"><%= postData.your_name %></p>
+        <p class="formLabel">Dojo Location:</p>
+        <p class="resultInfo"><%= postData.location %></p>
+        <p class="formLabel">Favorite Language:</p>
+        <p class="resultInfo"><%= postData.fav_language %>!!</p>
+        <p class="formLabel">Comment:</p>
+        <p class="resultInfo"><%= postData.comment %></p>
+      </div>
+      <form class="" action="/" method="get">
+        <button type="submit" name="button">Go Back</button>
+      </form>
+    </div>
+  </body>
+</html>

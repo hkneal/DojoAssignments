@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="master.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+         $(document).ready(function (){
+            var socket  = io.connect();
+           $('#clicked_form').submit(function(e) {
+        		e.preventDefault();
+				    socket.emit("button_clicked", function(){
+              console.log("Button Clicked");});
+			      });
+           socket.on( 'updated_count', function (data){
+             var hOne = document.getElementById('counter');
+             hOne.innerHTML = "The button has been pushed " + data.count + " time(s)";
+             hOne.style.display = 'block';
+
+            $('#reset_form').submit(function(e) {
+          		e.preventDefault();
+  				    socket.emit("reset_hit", function(){
+                console.log("Reset Button Clicked");});
+  			      });
+          });
+        });
+    </script>
+  </head>
+  <body>
+    <h1 id="counter"></h1>
+    <div class="center">
+      <p>Push the button to update the count!</p>
+      <form action="" id="clicked_form">
+        <button id="add_count" type="submit" name="button">Push the epic button</button>
+      </form>
+    </div>
+    <form action="" id="reset_form">
+      <button id="reset_button" type="submit" name="reset_button">Reset Count</button>
+    </form>
+  </body>
+</html>

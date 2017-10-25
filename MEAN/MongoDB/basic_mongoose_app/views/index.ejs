@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome to the Form!</h1>
+    <% for(const userObject of postData) { %>
+          <p>Name: <%= userObject.name %> Age: <%= userObject.age %></p>    
+    <% } %>
+    <form action='/users' method='post'>
+        Name: <input type='text' name='name'>
+        Age: <input type='text' name='age'>
+        <input type='submit' value='create user'>
+    </form>
+  </body>
+</html>

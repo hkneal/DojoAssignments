@@ -1,0 +1,22 @@
+<div class="formDiv">
+    <h1>Edit Product</h1>
+    <form (submit)='update(productForm.value)' #productForm='ngForm'>
+        <div *ngIf='product'>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" name="title" [(ngModel)]="product.title" required minlength="4">
+            </div>
+            <div>
+                <label for="price">Price</label>
+                <input type="number" name="price" [(ngModel)]="product.price" required>
+            </div>
+            <div>
+                <label for="imageUrl">Image Url</label>
+                <input type="text" name="imageUrl" [(ngModel)]="product.imageUrl">
+            </div>
+        </div>
+        <button id="delete" (click)="delete()">DELETE</button>
+        <button id="update" *ngIf='productForm.valid' type="submit">UPDATE</button>
+    </form>
+
+</div>

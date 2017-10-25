@@ -1,0 +1,32 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.formDiv {
+    margin-top: 20px;
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+}
+
+.score {
+    margin-left: 40px;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.button {
+    margin: 10px;
+    box-shadow: 3px 3px 3px black;
+}
+
+h3 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.score h1 {
+    text-align: center;
+}

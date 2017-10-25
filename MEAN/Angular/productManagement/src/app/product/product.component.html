@@ -1,0 +1,11 @@
+<h1>Products List</h1>
+<div class='product' *ngFor="let product of products; let i = index">
+    <img *ngIf='product.imageUrl != "./assets/images/undefined"; else elseBlock' [src]="product.imageUrl">
+    <ng-template #elseBlock>
+        <h2>No Image Available</h2>
+    </ng-template>
+    <h2>{{ product.title }}</h2>
+    <h2>${{ product.price }}</h2>
+    <button class="edit" [routerLink]="['/products', 'edit', product.id]">EDIT</button>
+    <button class="delete" (click)="delete(i)">DELETE</button>
+</div>

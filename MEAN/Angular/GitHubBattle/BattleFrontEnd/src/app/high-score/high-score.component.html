@@ -1,0 +1,14 @@
+<div class="player" *ngFor='let player of playerListSet; let i = index'>
+    <div class="wrapper">
+        <div class="rank">
+            <h1>{{ i + 1 }}</h1>
+        </div>
+        <div class="picture">
+            <img [src]="player.avatar_url">
+            <p>{{ player.name }}</p>
+        </div>
+        <div class="score">
+            <h1>Score: {{ player.score }}</h1>
+        </div>
+    </div>
+</div>

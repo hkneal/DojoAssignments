@@ -1,0 +1,9 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+        {{title}}
+    </h1>
+</div>
+<button *ngFor='let zone of timeZones; let i = index' (click)='displayZone(i)' [ngClass]="{'yellow': timeZones[i].clicked }">{{ zone.zone }}</button>
+<button (click)='clearTime()'>Clear</button>
+<h1>{{ currentTime | date:'medium'}}</h1>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Main Page</title>
+    <script type="text/javascript">
+      function zero_negativity(myArray){
+        isAllPositive = true;
+        for(var i=0; i<myArray.length; i++){
+          if(myArray[i] < 0) isAllPositive = false;
+        }
+        return isAllPositive;
+      }
+      function is_even(num){
+        if(num % 2 == 0){
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+      function how_many_even(myArray){
+        var evenCount = 0;
+        for(var i=0; i<myArray.length; i++){
+          if(is_even(myArray[i])){
+            ++evenCount;
+          }
+        }
+        return evenCount;
+      }
+      function create_dummy_array(n){
+        var myArray = [];
+        for(var i=0; i<n; i++){
+          myArray.push(getRandomInt(0, 10));
+        }
+        return myArray
+      }
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+      }
+      function random_choice(myArray){
+        var factor = myArray.length - getRandomInt(1, myArray.length+1);
+        return myArray[factor];
+      }
+      console.log(zero_negativity([3,4,5,6,7]));
+      console.log(zero_negativity([3,-4,5,6,7]));
+      for(var i=0; i<5; i++){
+        console.log(i, is_even(i));
+      }
+      console.log(how_many_even([3,4,5,6,7,8,10]));
+      console.log(create_dummy_array(6));
+      console.log(random_choice(["hello Hiram", 4, -13, "Dojo", false]));
+    </script>
+  </head>
+  <body>
+    <!-- <form class="" action="index.html" method="post">
+      {% csrf_token %}
+    </form> -->
+  </body>
+</html>

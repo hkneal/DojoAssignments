@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="master.css">
+  </head>
+  <body>
+    <div class="quotes">
+      <h1>Here are the awesome quotes!</h1>
+      <% for(const quoteObject of postData) { %>
+            <p>"<%= quoteObject.quote %></p>
+            <p class="indent">-<%= quoteObject.name %> at <%= quoteObject.createdAt %></p>
+            <hr>
+      <% } %>
+    </div>
+    <form action="/" method="get">
+      <input class="button" type="submit" value="Return Home">
+    </form>
+  </body>
+</html>

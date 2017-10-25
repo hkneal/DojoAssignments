@@ -1,0 +1,114 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="margin: 20px;">
+    <h1>
+        {{title}}!
+    </h1>
+</div>
+<div class="formDiv">
+    <form (submit)="onSubmit($event)" #userForm='ngForm'>
+        <label for="firstName">*First Name:</label>
+        <input type="text" name="firstName" value="" required minlength="2" maxlength="24" [(ngModel)]='user.firstName' #firstName='ngModel' />
+        <div class="error">
+            <p class="error" *ngIf='firstName.errors'>First Name is required and must be between 2 and 24 characters. </p>
+        </div>
+        <label for="lastName">*Last Name:</label>
+        <input type="text" name="lastName" value="" required minlength="2" maxlength="24" [(ngModel)]='user.lastName' #lastName="ngModel">
+        <div class="error">
+            <p class="error" *ngIf='lastName.errors'>Last Name is required and must be between 2 and 24 characters.</p>
+        </div>
+        <label for="email">*Email:</label>
+        <input type="email" name="email" value="" pattern="^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$" [(ngModel)]='user.email' #email="ngModel">
+        <div class="error">
+            <p class="error" *ngIf='email.errors'>A valid email is required.</p>
+        </div>
+        <label for="password">*Password:</label>
+        <input type="password" name="password" value="" required minlength="4" maxlength="24" pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?])[A-Za-z\d@$!%*#?]{8,}$/" [(ngModel)]='user.password' #password="ngModel">
+        <div class="error">
+            <p class="error" *ngIf='password.errors'>Passwords must contain at least 1 uppercase, 1 lowercase, and 1 special character.</p>
+        </div>
+        <label for="confirm_password">*Password Confirmation:</label>
+        <input type="password" name="confirm_password" value="" required minlength="4" maxlength="24">
+        <div class="error">
+            <p class="error" *ngIf='password.errors'>Password and Confirm Password must match.</p>
+        </div>
+        <label for="street_address">*Street Address:</label>
+        <input type="text" name="street_address" value="" required minlength="4" maxlength="24" [(ngModel)]='user.street_address' #streetAdd="ngModel">
+        <div class="error">
+            <p class="error" *ngIf='streetAdd.errors'>A valid street address is required</p>
+        </div>
+        <label for="unitno">Unit/Apt #:</label>
+        <input type="text" name="unitno" value="" minlength="1" maxlength="5" [(ngModel)]='user.unit_aptno' #unitno="ngModel">
+        <div class="error">
+            <p class="error" *ngIf='unitno.errors'>Unit number or letter must be between 1 and 5 characters.</p>
+        </div>
+        <label for="city">*City:</label>
+        <input type="text" name="city" value="" required minlength="1" maxlength="5" [(ngModel)]='user.city' #city="ngModel">
+        <div class="error">
+            <p class="error" *ngIf='city.errors'>A valid city is required</p>
+        </div>
+        <label for="state">*State:</label>
+        <select id="state" name="state" required [(ngModel)]='user.state' #state="ngModel">
+          <option selected="selected" value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="DC">District Of Columbia</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+        <div class="error">
+            <p class="error" *ngIf='state.errors'>Please select a state.</p>
+        </div>
+        <label for="lucky">*I'm feeling lucky:</label>
+        <input id="radio" type="radio" name="lucky" required value="true" checked [(ngModel)]='user.lucky' #lucky="ngModel">Yes
+        <input id="radio" type="radio" name="lucky" value="false">No
+        <div class="error">
+            <p class="error" *ngIf='lucky.errors'>Are you feeling lucky?</p>
+        </div>
+        <input *ngIf='userForm.valid' type="submit" value="Register">
+    </form>
+</div>

@@ -1,0 +1,27 @@
+.brownBox {
+    display: inline-block;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+    background-color: saddlebrown;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    box-shadow: 3px 3px 3px black;
+    color: white;
+}
+
+.on {
+    background-color: green;
+}
+
+.off {
+    background-color: red;
+}

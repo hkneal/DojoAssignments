@@ -1,0 +1,87 @@
+.addAuthor,
+.errorDiv {
+    margin: 40px;
+    display: inline-block;
+    width: 510px;
+    text-align: right;
+}
+
+.errorDiv {
+    text-align: left;
+    width: 300px;
+}
+
+h1 {
+    text-align: left;
+}
+
+h2 {
+    display: inline-block;
+    width: 40px;
+}
+
+.h2plus {
+    width: 14px;
+}
+
+.button {
+    display: block;
+    box-shadow: 3px 3px 3px black;
+    margin: 10px;
+    margin-left: calc(100% - 75px);
+}
+
+.quote {
+    border: 2px solid black;
+    width: 850px;
+}
+
+.words {
+    width: 75%;
+    display: inline-block;
+}
+
+.votes {
+    display: inline-block;
+    width: 23%;
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+.voteButtons {
+    margin-left: calc(100% - 197px);
+    display: inline-block;
+    width: 125px;
+    vertical-align: top;
+}
+
+p {
+    margin: 10px;
+}
+
+.author {
+    margin: 5px;
+    margin-left: 25px;
+}
+
+.voteUp {
+    display: block;
+    box-shadow: 3px 3px 3px black;
+    background-color: #B7D6AA;
+    width: 125px;
+}
+
+.voteDown {
+    display: block;
+    box-shadow: 3px 3px 3px black;
+    background-color: #E8999A;
+    width: 125px;
+}
+
+.deleteVote {
+    display: block;
+    box-shadow: 3px 3px 3px black;
+    background-color: #333333;
+    color: white;
+    width: 125px;
+}

@@ -1,0 +1,11 @@
+<div class="header">
+    <nav>
+        <a [routerLink]="['/players','list']">List</a>
+        <div class="verticalLine">
+            <a id="status" [routerLink]="['/players', 'addplayer']">Add Player</a>
+        </div>
+    </nav>
+</div>
+<div class="component">
+    <router-outlet></router-outlet>
+</div>

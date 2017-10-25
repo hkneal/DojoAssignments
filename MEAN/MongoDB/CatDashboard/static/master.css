@@ -1,0 +1,54 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+a{
+  color: inherit;
+  color: blue;
+  text-decoration: underline;
+}
+hr{
+  margin-bottom: 5px;
+}
+h1, nav{
+  margin: 20px;
+}
+h3{
+  margin: 10px;
+  margin-left: 30px;
+}
+.wrapper, .enterChanges{
+  margin: 20px;
+}
+.enterChanges{
+  width: 400px;
+}
+.listing{
+  margin-left: 30px;
+}
+.button{
+  display: inline-block;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  box-shadow: 3px 3px 2px black;
+}
+.buttonDiv{
+  display: inline-block;
+}
+.buttonDiv1{
+  display: inline-block;
+  margin-left: 70px;
+}
+.indent{
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+label{
+  width: 135px;
+  display: inline-block;
+}
+textarea{
+  margin-top: 10px;
+  vertical-align: top;
+}

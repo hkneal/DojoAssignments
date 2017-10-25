@@ -1,0 +1,30 @@
+<div class="addAuthor">
+    <h1>Add a Quote</h1>
+    <form (submit)="onSubmit()">
+        <textarea rows="4" cols="80" [(ngModel)]="quote.quote" name="quote"></textarea>
+        <label for="author">Author</label>
+        <input type="text" name="author" value="" [(ngModel)]="quote.author" name="author">
+        <input class="button" type="submit" value="Add Quote">
+    </form>
+</div>
+<div class="errorDiv">
+
+</div>
+<div class="quoteList">
+    <h1 *ngIf='quoteArray.length > 0'>Quotes List</h1>
+    <div *ngFor="let quote of quoteArray; let i = index" class="quote">
+        <div class="words">
+            <p>"{{ quote.quote }}"</p>
+            <p class="author">- {{ quote.author }}</p>
+        </div>
+        <div class="votes">
+            <h2 *ngIf='quote.votes > 0' class="h2plus">+</h2>
+            <h2>{{ quote.votes }}</h2>
+            <div class="voteButtons">
+                <button class="voteUp" (click)="voteUp(i)" type="">Vote Up</button>
+                <button class="voteDown" (click)="voteDown(i)" type="">Vote Down</button>
+                <button class="deleteVote" (click)="deleteQuote(i)" type="">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

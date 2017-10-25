@@ -1,0 +1,11 @@
+<div style="text-align:center">
+    <h1>
+        {{title}}
+    </h1>
+</div>
+<div *ngFor='let count of switchArray; let i = index' class="brownBox">
+    <button [ngClass]="{'on': switchArray[i].on}" (click)='togglePower(i)' *ngIf='switchArray[i].on; else elseBlock'>ON</button>
+    <ng-template #elseBlock>
+        <button class="off" (click)='togglePower(i)'>OFF</button>
+    </ng-template>
+</div>

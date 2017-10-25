@@ -1,0 +1,16 @@
+<div *ngIf='gotPlayerOne; else elseBlock'>
+    <img [src]="player.avatar_url">
+    <p>{{ player.name }}</p>
+</div>
+<ng-template #elseBlock>
+    <h1>Player 1</h1>
+    <form (submit)='getPlayer(noteForm.value)' #noteForm='ngForm'>
+        <label for="username">Github Username:</label>
+        <input type="text" name="username" [(ngModel)]="player.username" required minlength="2" #userName='ngModel'>
+        <div class="errors">
+            <span style="color:red" *ngIf="userName.dirty && userName.invalid">A user name is required (minimum of 2 characters).</span>
+            <span style="color:red" *ngIf='errors'>"Github user name does not exist, try again."</span>
+        </div>
+        <input type="submit" class="playerButton" value="Get User" [disabled]='noteForm.invalid'>
+    </form>
+</ng-template>

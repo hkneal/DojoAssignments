@@ -1,0 +1,15 @@
+<fieldset>
+    <legend>SuperSaiyanTwoComponent</legend>
+    <p>Power Level: {{ calculatedPower.ss2PowerLevel }}</p>
+    <!-- Test this -->
+    <!-- <h4 *ngIf="power > 9000 && power <= 20000">Over 9000!</h4>
+    <h4 *ngIf="power > 20000 && power < 50000">Superlative!</h4>
+    <h4 *ngIf="power >= 50000">The One!</h4> -->
+    <h3 *ngIf='check9K()'>"Over 9000"</h3>
+    <h3 *ngIf='check20K()'>"Superlative"</h3>
+    <!-- <h3 *ngIf='check50K()'>"The One"</h3> -->
+    <!-- Fix to use ngOnchanges in .ts -->
+    <!-- ngOnChanges() {
+    this.power = this.power * 10;
+  } -->
+</fieldset>

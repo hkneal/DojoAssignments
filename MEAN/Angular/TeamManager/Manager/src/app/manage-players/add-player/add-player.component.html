@@ -1,0 +1,17 @@
+<div class='main'>
+    <h1>Add Player</h1>
+    <div class='formDiv'>
+        <form (submit)='onSubmit(noteForm.value)' #noteForm='ngForm'>
+            <label for="name">Player Name:</label>
+            <input type="text" name="name" [(ngModel)]="player.name" required minlength="2" #wholeName='ngModel'>
+            <span class='alert alert-danger' *ngIf="wholeName.dirty && wholeName.invalid">A full name is required (minimum of 2 characters).</span>
+            <!-- <span style="color:red" *ngIf="wholeName.dirty && wholeName.invalid">A full name is required (minimum of 2 characters).</span> -->
+            <label for="position">Preferred Position:</label>
+            <input type="text" name="position" [(ngModel)]="player.position">
+            <input class='btn btn-md btn-success' type="submit" [disabled]='noteForm.invalid' value="ADD">
+            <!-- <input class='button' type="submit" [disabled]='noteForm.invalid' value="ADD"> -->
+        </form>
+    </div>
+</div>
+
+<!-- || noteForm.reset() -->

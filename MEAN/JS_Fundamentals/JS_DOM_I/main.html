@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Main Page</title>
+    <!-- {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8"> -->
+  </head>
+  <body>
+    <h1>Students</h1>
+    <ul id="main">
+        <!-- this is empty-->
+    </ul>
+  <script>
+      function appendList(array, id){
+          // finish this function
+        for(var i=0; i<array.length; i++){
+          let new_student = document.createElement("li");
+          new_student.innerHTML = array[i];
+          document.getElementById(target_id).appendChild(new_student);
+        }
+      };
+      function superAppend(array, element, id){
+          // finish this function
+        for(var i=0; i<array.length; i++){
+          let new_student = document.createElement(element);
+          new_student.innerHTML = array[i];
+          document.getElementById(target_id).appendChild(new_student);
+        }
+      };
+      let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+      let target_id = "main";
+      let element = "li";
+      // appendList(students, target_id);
+      superAppend(students, element, target_id);
+  </script>
+  </body>
+</html>

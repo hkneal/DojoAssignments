@@ -1,0 +1,11 @@
+<div class="header">
+    <h1>{{ title }}</h1>
+    <nav>
+        <a [routerLink]="['/home']">Home</a> |
+        <a [routerLink]="['/products']">Product List</a> |
+        <a [routerLink]="['/products', 'new']">Product Creation</a> |
+    </nav>
+</div>
+<div class="component">
+    <router-outlet></router-outlet>
+</div>

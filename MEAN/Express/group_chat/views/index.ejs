@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="master.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+         $(document).ready(function (){
+            let socket  = io.connect();
+
+            let name = prompt("Please enter your name:", "First & Last Name");
+            let commentList = [];
+            if (name != null) {
+              socket.emit("log_new_user", {name: name});
+            };
+
+            socket.on( "present_comments", function (data){
+              //update the H1 greeting
+              document.getElementById("greeting").innerHTML = "Conversation Board";
+
+              //update the div with list of users and comments
+              let commentDiv = document.getElementById("comments");
+              commentDiv.innerHTML = "";
+              for (const userObject of data.comments){
+                $("#comments").append(userObject.name + ": " + userObject.comment + "<br><br>");
+              }
+              //make comment section, comments, and button visible
+              commentDiv.style.display = 'block';
+              document.getElementById("add_comment").style.display = 'block';
+              document.getElementById("add_comment_button").style.display = 'block';
+            });
+
+            $('#add_comment_form').submit(function(e) {
+         		e.preventDefault();
+            socket.emit("add_message", {
+  				  	message: $('#add_comment').val(),
+            });
+    			 });
+        });
+    </script>
+  </head>
+  <body>
+    <h1 id="greeting"></h1>
+    <div id="comments"></div>
+    <form id="add_comment_form" action="">
+      <textarea id="add_comment" rows="2" cols="80">enter your message here</textarea>
+      <input id="add_comment_button" type="submit" value="Send">
+    </form>
+  </body>
+</html>

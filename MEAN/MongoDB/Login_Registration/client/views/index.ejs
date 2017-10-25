@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Dojo Quotes Page</title>
+    <link rel="stylesheet" href="/master.css">
+  </head>
+  <body>
+    <h1>Welcome to QuotingDojo!</h1>
+    <h2>Please Login or Register to begin.</h2>
+    <div class="loginDiv">
+      <form action="/login" method="post">
+       <fieldset>
+        <legend>Log in:</legend>
+          <label for="email">Email Address:</label>
+          <input type="email" name="email" value="">
+          <label for="password">Password:</label>
+          <input type="password" name="password" value="">
+          <input class="button" type="submit" value="Login">
+       </fieldset>
+      </form>
+    </div>
+    <div class="registerDiv">
+      <form action="/register" method="post">
+       <fieldset>
+        <legend>Register:</legend>
+          <label for="name.first">First Name:</label>
+          <input type="text" name="name.first" value="">
+          <label for="name.last">Last Name:</label>
+          <input type="text" name="name.last" value="">
+          <label for="email">Email Address:</label>
+          <input type="text" name="email" value="">
+          <label for="password">Password:</label>
+          <input type="password" name="password" value="">
+          <label for="confirm_password">Confirm Password:</label>
+          <input type="password" name="confirm_password" value="">
+          <label for="birthday">Birthday:</label>
+          <input type="date" name="birthday" value="">
+          <input class="button" type="submit" value="Register">
+       </fieldset>
+      </form>
+    </div>
+    <div class="errors">
+      <% if(typeof(err) != 'undefined') { %>
+        <% if(typeof(err) === 'object') { %>
+          <%= err %>
+        <% } else { %>
+            <%= err %>
+          <% } %>
+      <% } %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.barcode {
+    display: inline-block;
+    border: 1px dotted black;
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    padding: 0px;
+}

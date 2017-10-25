@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+  <head>
+    <meta charset="utf-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="master.css">
+  </head>
+  <body>
+    <div id="formInput">
+      <form class="" action="/result" method="post">
+        <label class="formLabel" for="your_name">Your Name: </label>
+        <input class="formLabelInput" type="text" name="your_name" value="">
+        <label class="formLabel" for="location">Dojo Location: </label>
+        <select class="formLabelInput" name="location">
+          <option value="Chicago">Chicago</option>
+          <option value="Dallas">Dallas</option>
+          <option value="Mountain View">Mountain View</option>
+          <option value="Seattle">Seattle</option>
+          <option value="Washington DC.">Washington DC.</option>
+        </select>
+        <label class="formLabel" for="fav_language">Favorite Language: </label>
+        <select class="formLabelInput" name="fav_language">
+          <option value="JavaScript">JavaScript</option>
+          <option value="Python">Python</option>
+          <option value="Node">Node</option>
+        </select>
+        <label class="formLabelComment" for="your_name">Comment (optional):</label>
+        <textarea name="comment" rows="8" cols="80"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+  </div>
+  </body>
+</html>

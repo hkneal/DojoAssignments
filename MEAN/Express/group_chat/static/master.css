@@ -1,0 +1,31 @@
+/* RESET */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+#greeting{
+  margin: 20px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  /*display: none;*/
+}
+#comments{
+  border: 3px solid #000;
+  margin-left: 90px;
+  width: 900px;
+  display: none;
+  padding: 10px;
+}
+#add_comment{
+  margin: 20px;
+  border: 3px solid #000;
+  margin-left: 90px;
+  width: 900px;
+  display: none;
+}
+#add_comment_button{
+  margin-left: 900px;
+  width: 90px;
+  box-shadow: 3px 3px black;
+  display: none;
+}
