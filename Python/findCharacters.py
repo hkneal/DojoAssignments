@@ -1,6 +1,6 @@
 # input
 l = ['hello','world','my','name','is','Anna', 'Ann']
-char = 'a'
+char = 'e'
 # output
 n = ['hello','world']
 myList = []
