@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 <html lang='en-US'>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>User Page</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
-  </head>
-  <body>
-    <div class="header">
-      <h1 id='welcome'>User Alias:  {{ reviewer.first_name }}</h1>
-      <a href="{% url 'home_url' user.id %}">Home</a>
-      <a href="{% url 'add_book' user.id %}">Add Book and Review</a>
-      <a href="{% url 'logout' %}">Logout</a>
+    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/atw5lys.css">
+    <script src="https://use.typekit.net/mcg1kfo.js"></script>
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'atw5lys',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="headerMessage">
+            <h1 id='welcome'>User Alias: {{ reviewer.first_name }}</h1>
+            <a href="{% url 'home_url' user.id %}">Home</a>
+            <a href="{% url 'add_book' user.id %}">Review a Book </a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </header>
+    <div class='user'>
+        <h2>Name: {{ reviewer.first_name }} {{ reviewer.last_name }}</h2>
+        <h2>Email: {{ reviewer.email }}</h2>
+        <h2>Total Reviews: {{ reviewer.reviews.all.count }}</h2>
+        <br><br><br>
+        <h3>Posted Reviews on the following books:</h3>
+        <div class="books">
+            {% for book in reviews %}
+            <a id='allBooks' href="{% url 'book_page' user.id book.book.id %}">{{ book.book.title }}</a> {% endfor %}
+        </div>
     </div>
-    <h3>Name:  {{ reviewer.first_name }} {{ reviewer.last_name }}</h3>
-    <h3>Email:  {{ reviewer.email }}</h3>
-    <h3>Total Reviews:  {{ reviewer.reviews.all.count }}</h3>
-    <br><br><br>
-    <h3>Posted Reviews on the following books:</h3>
-    <div class="books">
-      {% for book in reviews %}
-        <a id='allBooks' href="{% url 'book_page' user.id book.book.id %}">{{ book.book.title }}</a>
-      {% endfor %}
-    </div>
-  </body>
+</body>
+
 </html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vacation</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/usq1ncs.css">
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'usq1ncs',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+</head>
+
+<body>
+    <app-root></app-root>
+</body>
+
+</html>

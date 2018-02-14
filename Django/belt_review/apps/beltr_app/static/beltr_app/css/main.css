@@ -1,269 +1,440 @@
 /* RESET */
 
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+* {
+    margin: 0px;
+    padding: 0px;
+}
 
-*{
-  margin: 0px;
-  padding: 0px;
+body {
+    background: url("images/Fotosearch_k11389025.jpg");
+    background-size: 1440px 815px;
 }
-h1, h2, h3{
-  margin: 20px;
-  margin-bottom: 0px;
-}
-textarea{
-  border: 3px solid #000;
-  vertical-align: middle;
-}
-.header a{
-  margin: 10px;
-  margin-top: 20px;
-  vertical-align: top;
-  display: inline-block;
-  color: inherit;
-  color: blue;
-  text-decoration: underline;
-}
-.regDiv a, .loginDiv a{
-  color: inherit;
-  color: red;
-  text-decoration: underline;
-}
-.regDiv, .loginDiv{
-  margin: 20px;
-  margin-top: 48px;
-  width: 325px;
-  display: inline-block;
-  border: 3px solid black;
-  padding: 20px;
-}
-.regDiv{
-  z-index: 999998;
-}
-.regDiv p{
-  margin: 10px;
-}
-.loginDiv{
-  z-index: 999998;
-  padding: 20px;
-  vertical-align: top;
-}
-.imprint{
-  z-index: 999999;
-  position: absolute;
-  display: inline-block;
-  background-color: white;
-  margin: 30px;
-}
-.submit{
-  width: 90px;
-  margin: 20px;
-  margin-left: calc(100% - 91px);
-  background-color: lightgray;
-  /*color: white;*/
-  box-shadow: 3px 3px black;
-  padding: 5px;
-  font-size: 9pt;
-}
-.error{
-  background-color: red;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  border: 3px solid black;
-  margin: 80px;
-  width: 450px;
-}
-.errorlist{
-display: none;
-}
-.addBook{
-  margin: 40px;
-  margin-bottom: 0px;
-  width: 576px;
-}
-.regDiv label, .loginDiv label{
-  display: inline-block;
-  width: 150px;
-  /*text-align: right;*/
-  margin: 10px;
-}
-.addBook label{
-  display: inline-block;
-  width: 150px;
-  margin: 20px;
-}
-.addReview{
-  display: inline-block;
-  vertical-align: top;
-  margin: 20px;
-  margin-left: 80px;
-}
-.success{
-  margin: 20px;
-  color: lightgreen;
-}
-.reviews{
-  margin: 20px;
-  width: 50%;
-  display: inline-block;
-}
-.otherBooks{
-  margin: 20px;
-  display: inline-block;
-  vertical-align: top;
-}
-.bookTitle{
-  margin: 10px;
-  margin-left: 25px;
-  margin-bottom: 0px;
-  display: block;
-  color: inherit;
-  color: blue;
-}
-.reviewInfo{
-  margin-left: 60px;
-}
-.allBooks{
-  margin: 10px;
-  width: 400px;
-  height: 250px;
-  border: 3px solid #000;
-  overflow: scroll;
-}
-.books{
-  margin: 20px;
-  margin-left: 60px;
-}
-#theReview{
-  font-style: italic;
-}
-#welcome{
-  display: inline-block;
-  margin-right: 700px;
-}
-#addWelcome{
-  display: inline-block;
-  margin-right: 600px;
-}
-#addSubmit{
-  margin-top: 80px;
-  margin-left: calc(40% - 100px);
-  box-shadow: 3px 3px black;
-}
-#rating{
-  margin-top: 20px;
-  margin-left: 60px;
-  display: inline-block;
-}
-#rated{
-  margin-top: 10px;
-  margin-left: 60px;
-  display: inline-block;
-}
-#reviewer{
-  color: inherit;
-  color: blue;
-  display: inline-block;
-  font-style: normal;
-}
-#del_reviewer{
-  margin-left: 70px;
-  color: inherit;
-  color: blue;
-  display: inline-block;
-}
-#allBooks{
-  margin: 10px;
-  color: inherit;
-  color: blue;
-  display: block;
-}
-#bookReview{
-  display: block;
-}
-#inline{
-  font-style: italic;
-  display: inline-block;
-}
-/*#theReview{
-  display: inline-block;
-}*/
-/*.headliner{
-  margin: 20px;
-  display: inline-block;
-}*/
 
-/*#headmsg{
-  position: relative;
+header {
+    background-color: black;
 }
-h2{
-  margin-bottom: 20px;
-}*/
+
+h1,
+h2,
+h3 {
+    font-family: gastromond, sans-serif;
+    font-family: relation-one, sans-serif;
+    /* font-family: relation-two, sans-serif; */
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+}
+
+textarea {
+    border: 3px solid #000;
+    vertical-align: middle;
+}
+
+legend {
+    margin-left: 20px;
+    color: white;
+    font-family: relation-one, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25pt;
+}
+
+fieldset {
+    color: white;
+    font-weight: bold;
+}
+
+.mainTitle {
+    margin-left: 29%;
+    font-family: gastromond, sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    color: white;
+    font-size: 52pt;
+}
+
+.welcome {
+    margin: 20px;
+    margin-top: 0;
+    text-align: center;
+    color: white;
+    font-family: relation-one, sans-serif;
+    /* font-family: relation-two, sans-serif; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15pt;
+}
+
+.headerMessage {
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin-left: 20px;
+    font-size: 18pt;
+}
+
+.headerMessage a {
+    margin: 10px;
+    margin-top: 20px;
+    vertical-align: top;
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-family: relation-one, sans-serif;
+    /* font-family: relation-two, sans-serif; */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15pt;
+}
+
+.headerMessage h2 {
+    font-size: 20pt;
+}
+
+.welcome:hover,
+.headerMessage a:hover {
+    color: rgb(34, 86, 146);
+}
+
+.regDiv a,
+.loginDiv a {
+    color: inherit;
+    color: red;
+    text-decoration: underline;
+}
+
+.regDiv,
+.loginDiv {
+    margin: 20px;
+    margin-top: 48px;
+    width: 325px;
+    display: inline-block;
+    border: 3px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.regDiv p {
+    margin: 10px;
+}
+
+.regDiv {
+    margin-left: 17%;
+}
+
+.loginDiv {
+    padding: 20px;
+    vertical-align: top;
+}
+
+.submit {
+    width: 100px;
+    margin: 20px;
+    margin-left: calc(100% - 110px);
+    background-color: black;
+    color: white;
+    box-shadow: 3px 3px 5px lightgray;
+    padding: 5px;
+    font-size: 13pt;
+    font-family: relation-one, sans-serif;
+    /* font-family: relation-two, sans-serif; */
+    font-style: normal;
+    font-weight: 400;
+    border: none;
+}
+
+.submit:hover {
+    color: rgb(34, 86, 146);
+}
+
+.error {
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border: 3px solid black;
+    margin: 80px;
+    width: 450px;
+}
+
+.errorlist {
+    display: none;
+}
+
+.addBook {
+    margin: 40px;
+    margin-bottom: 0px;
+    width: 576px;
+}
+
+.regDiv label,
+.loginDiv label {
+    display: inline-block;
+    width: 150px;
+    margin: 10px;
+}
+
+.addBook label {
+    display: inline-block;
+    width: 150px;
+    margin: 15px;
+}
+
+.addBook textarea {
+    border: 1px solid black;
+}
+
+.newBook #rating {
+    margin-left: 223px;
+}
+
+.newBook .stars {
+    margin: 12px;
+    margin-left: -50px;
+}
+
+.success {
+    margin-left: 40px;
+    color: rgb(34, 86, 146);
+    padding-bottom: 10px;
+}
+
+.otherBooks,
+.reviews,
+.addReview,
+.newBook,
+.user {
+    margin: 20px;
+    margin-top: 40px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: white;
+    overflow: scroll;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.otherBooks h2,
+.reviews h2,
+.reviews h2,
+.addReview h2,
+.newBook h2,
+.user h2 {
+    background-color: black;
+    padding: 20px;
+}
+
+.user h3 {
+    padding: 20px;
+    padding-bottom: 0px;
+    color: black;
+}
+
+.user h2 {
+    padding: 10px;
+}
+
+.user {
+    width: 600px;
+    overflow: scroll;
+}
+
+.addReview {
+    margin-left: 40px;
+}
+
+.reviews {
+    width: 50%;
+}
+
+.bookTitle {
+    margin: 10px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+    display: block;
+    color: inherit;
+    color: blue;
+}
+
+.reviewInfo {
+    margin-left: 60px;
+}
+
+.allBooks {
+    margin: 10px;
+    width: 400px;
+    height: 250px;
+    overflow: scroll;
+}
+
+.books {
+    margin: 20px;
+    margin-left: 60px;
+}
+
+#theReview {
+    font-style: italic;
+}
+
+#welcome {
+    display: inline-block;
+    width: 970px;
+    margin-right: 135px;
+}
+
+#addWelcome {
+    display: inline-block;
+    margin-right: 600px;
+}
+
+#rating {
+    margin-top: 5px;
+    margin-left: -196px;
+    display: inline-block;
+}
+
+#rated {
+    margin-top: 10px;
+    margin-left: 60px;
+    display: inline-block;
+}
+
+#reviewer {
+    color: inherit;
+    color: blue;
+    display: inline-block;
+    font-style: normal;
+}
+
+#del_reviewer {
+    margin-left: 70px;
+    color: inherit;
+    color: blue;
+    display: inline-block;
+}
+
+#allBooks {
+    margin: 10px;
+    color: inherit;
+    color: blue;
+    display: block;
+}
+
+#bookReview {
+    margin-top: 10px;
+    display: block;
+}
+
+#inline {
+    font-style: italic;
+    display: inline-block;
+}
+
+
 /****** Style Star Rating Widget *****/
+
+
 /* Modified for both before and after form capture (rating / rated) */
+
 .rating {
-  border: none;
-  float: left;
-}
-.stars{
-  display: inline-block;
-  margin-left: 20px;
-  vertical-align: middle;
+    margin-left: 55px;
+    border: none;
+    float: left;
 }
 
-.rating > input { display: none; }
-.rating > label:before {
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
+.stars {
+    display: inline-block;
+    margin: 20px;
+    margin-top: 10px;
+    vertical-align: middle;
 }
 
-.rating > .half:before {
-  content: "\f089";
-  position: absolute;
+.rating>input {
+    display: none;
 }
 
-.rating > label {
-  color: #ddd;
- float: right;
+.rating>label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating>.half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating>label {
+    color: #ddd;
+    float: right;
 }
 
 .rated {
-  border: none;
-  float: left;
-}
-.rated > input { display: none; }
-.rated > label{
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
+    border: none;
+    float: left;
 }
 
-.rated > .half:before {
-  content: "\f005";
-  /*position: absolute;*/
-}
-.rated > .halfs:after {
-  content: "\f089";
-  /*position: absolute;*/
+.rated>input {
+    display: none;
 }
 
-.rated > label {
-  color: #FFD700; /* Gold */
- /*float: right;*/
+.rated>label {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
 }
+
+.rated>.half:before {
+    content: "\f005";
+    /*position: absolute;*/
+}
+
+.rated>.halfs:after {
+    content: "\f089";
+    /*position: absolute;*/
+}
+
+.rated>label {
+    color: #FFD700;
+    /* Gold */
+    /*float: right;*/
+}
+
 
 /***** CSS Magic to Highlight Stars on Hover *****/
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* Gold hover previous stars in list */
+.rating>input:checked~label,
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } /* Faded Gold */
+/* show gold star when clicked */
+
+.rating:not(:checked)>label:hover,
+
+/* hover current star */
+
+.rating:not(:checked)>label:hover~label {
+    color: #FFD700;
+}
+
+
+/* Gold hover previous stars in list */
+
+.rating>input:checked+label:hover,
+
+/* hover current star when changing rating */
+
+.rating>input:checked~label:hover,
+.rating>label:hover~input:checked~label,
+
+/* lighten current selection */
+
+.rating>input:checked~label:hover~label {
+    color: #FFED85;
+}
+
+
+/* Faded Gold */

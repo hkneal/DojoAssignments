@@ -1,70 +1,98 @@
 <!DOCTYPE html>
 <html lang='en-US'>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Home Page</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
-  </head>
-  <body>
-  <div class="header">
-    <h1 id='welcome'>Welcome, {{ user.first_name }}!</h1>
-    <a href="{% url 'add_book' user.id %}">Add Book and Review</a>
-    <a href="{% url 'logout' %}">Logout</a>
-  </div>
-  <p class="success">{{ message }}</p>
-  <div class="reviews">
-    <h2>Recent Book Reviews:</h2>
-    {% for review in recent_reviews|slice:":3" %}
-      <a class="bookTitle" href="{% url 'book_page' user.id review.book.id %}">{{ review.book.title }}</a>
-      <p id="rated">Rating:</p>
-      <div class="stars">
-        <fieldset class=rated>
-        {% if review.rating_whole == 5 %}
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-        {% elif review.rating_whole == 4 %}
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-        {% elif review.rating_whole == 3 %}
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-        {% elif review.rating_whole == 2 %}
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-        {% elif review.rating_whole == 1 %}
-          <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-        {% endif %}
-        {% if review.rating_remainder == 1 %}
-          <input type="radio" id="starhalf" name="rating" value="5" /><label class = "halfs" for="star5"></label>
-        {% endif %}
-        <!-- Handle the 0 case -->
-        </fieldset>
-      </div>
-      <br>
-      <div class="reviewInfo">
-        <p id="theReview"><a id="reviewer" href="{% url 'user_page' user.id review.user.id %}">{{review.user.first_name}}</a> says {{review.review}}</p>
+    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/atw5lys.css">
+    <script src="https://use.typekit.net/mcg1kfo.js"></script>
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'atw5lys',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="headerMessage">
+            <h1 id='welcome'>Welcome, {{ user.first_name }}!</h1>
+            <a href="{% url 'add_book' user.id %}">Review a Book</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+        <p class="success">{{ message }}</p>
+    </header>
+    <div class="reviews">
+        <h2>Recent Book Reviews:</h2>
+        {% for review in recent_reviews|slice:":3" %}
+        <a class="bookTitle" href="{% url 'book_page' user.id review.book.id %}">{{ review.book.title }}</a>
+        <p id="rated">Rating:</p>
+        <div class="stars">
+            <fieldset class=rated>
+                {% if review.rating_whole == 5 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 4 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 3 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 2 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 1 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% endif %} {% if review.rating_remainder == 1 %}
+                <input type="radio" id="starhalf" name="rating" value="5" /><label class="halfs" for="star5"></label> {% endif %}
+                <!-- Handle the 0 case -->
+            </fieldset>
+        </div>
         <br>
-        <p id="inline">Posted on {{review.created_at}}</p>
-        {% if review.user.id == user.id %}
-          <a id="del_reviewer" href="{% url 'delete_review' review.id %}">Delete this Review</a>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
-  <div class="otherBooks">
-    <h2>Other Books with Reviews:</h2>
-    <div class="allBooks">
-      {% for book in all_books %}
-        <a id='allBooks' href="{% url 'book_page' user.id book.id %}">{{book.title}}</a>
-      {% endfor %}
+        <div class="reviewInfo">
+            <p id="theReview"><a id="reviewer" href="{% url 'user_page' user.id review.user.id %}">{{review.user.first_name}}</a> says {{review.review}}</p>
+            <br>
+            <p id="inline">Posted on {{review.created_at}}</p>
+            {% if review.user.id == user.id %}
+            <a id="del_reviewer" href="{% url 'delete_review' review.id %}">Delete this Review</a> {% endif %}
+        </div>
+        {% endfor %}
     </div>
-  </div>
-  </body>
+    <div class="otherBooks">
+        <h2>Other Books with Reviews:</h2>
+        <div class="allBooks">
+            {% for book in all_books %}
+            <a id='allBooks' href="{% url 'book_page' user.id book.id %}">{{book.title}}</a> {% endfor %}
+        </div>
+    </div>
+</body>
+
 </html>

@@ -1,89 +1,118 @@
 <!DOCTYPE html>
 <html lang='en-US'>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Books Page</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
-  </head>
-  <body>
-    <div class="header">
-      <h1 id='welcome'>{{ book.title }}!</h1>
-      <a href="{% url 'home_url' user.id %}">Home</a>
-      <a href="{% url 'logout' %}">Logout</a>
-    </div>
-    <h2>{{ book.author.first_name }} {{ book.author.last_name }}</h2>
+    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/atw5lys.css">
+    <script src="https://use.typekit.net/mcg1kfo.js"></script>
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'atw5lys',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="headerMessage">
+            <h1 id='welcome'>{{ book.title }}!</h1>
+            <a href="{% url 'home_url' user.id %}">Home</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <h2>{{ book.author.first_name }} {{ book.author.last_name }}</h2>
+        </div>
+    </header>
     {% if error %}
-      <h3 class="error">{{ error.error }}</h3>
+    <h3 class="error">{{ error.error }}</h3>
     {% endif %}
     <div class="reviews">
-      <h1>Reviews:</h1>
-      {% for review in reviews %}
+        <h2>Reviews:</h2>
+        {% for review in reviews %}
         <hr>
         <p id="rated">Rating:</p>
         <div class="stars">
-          <fieldset class=rated>
-          {% if review.rating_whole == 5 %}
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          {% elif review.rating_whole == 4 %}
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          {% elif review.rating_whole == 3 %}
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          {% elif review.rating_whole == 2 %}
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          {% elif review.rating_whole == 1 %}
-            <input type="radio" id="star1" name="rating" value="5" /><label class = "half" for="star1"></label>
-          {% endif %}
-          {% if review.rating_remainder == 1 %}
-            <input type="radio" id="starhalf" name="rating" value="5" /><label class = "halfs" for="star5"></label>
-          {% endif %}
-          <!-- Handle the 0 case -->
-          </fieldset>
+            <fieldset class=rated>
+                {% if review.rating_whole == 5 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 4 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 3 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 2 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label>
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% elif review.rating_whole == 1 %}
+                <input type="radio" id="star1" name="rating" value="5" /><label class="half" for="star1"></label> {% endif %} {% if review.rating_remainder == 1 %}
+                <input type="radio" id="starhalf" name="rating" value="5" /><label class="halfs" for="star5"></label> {% endif %}
+                <!-- Handle the 0 case -->
+            </fieldset>
         </div>
         <br>
         <div class="reviewInfo">
-          <p id="theReview"><a id="reviewer" href="{% url 'user_page' user.id review.user.id %}">{{review.user.first_name}}</a> says {{review.review}}</p>
-          <br>
-          <p id="inline">Posted on {{review.created_at}}</p>
-          {% if review.user.id == user.id %}
-            <a id="del_reviewer" href="{% url 'delete_review' review.id %}">Delete this Review</a>
-          {% endif %}
+            <p id="theReview"><a id="reviewer" href="{% url 'user_page' user.id review.user.id %}">{{review.user.first_name}}</a> says {{review.review}}</p>
+            <br>
+            <p id="inline">Posted on {{review.created_at}}</p>
+            {% if review.user.id == user.id %}
+            <a id="del_reviewer" href="{% url 'delete_review' review.id %}">Delete this Review</a> {% endif %}
         </div>
-      {% endfor %}
+        {% endfor %}
     </div>
     <div class="addReview">
-      <form action="{% url 'add_review' user.id book.id %}" method="post">
-        {% csrf_token %}
-        <h1>Add a Review:</h1>
-        <textarea id="bookReview" name="review" rows="6" cols="60"></textarea>
-        <label id="rating" for="star_rating">Rating:</label>
-        <div class="stars">
-          <fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-              <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-              <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-              <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-              <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-              <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-              <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-              <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-              <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-              <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-          </fieldset>
-        </div>
-          <br>
-          <input id='addSubmit' type="submit" value="Submit Review">
-      </form>
+        <form action="{% url 'add_review' user.id book.id %}" method="post">
+            {% csrf_token %}
+            <h2>Add a Review:</h2>
+            <div class="stars">
+                <textarea id="bookReview" name="review" rows="6" cols="60"></textarea>
+                <label id="rating" for="star_rating">Rating:</label>
+                <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+            </div>
+            <br>
+            <input class='submit' type="submit" value="Submit Review">
+        </form>
     </div>
-  </body>
+</body>
+
 </html>

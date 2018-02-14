@@ -1,0 +1,23 @@
+.mainBody {
+    /* background-color: slategray; */
+    background-color: #22384e;
+    padding: 1%;
+}
+
+.slideImage {
+    max-height: 500px;
+}
+
+img {
+    border-radius: 20px;
+    border: 3px solid white;
+}
+
+
+/* .carousel-control-prev-icon {
+    background-color: black;
+}
+
+.carousel-control-next-icon {
+    background-color: black;
+} */

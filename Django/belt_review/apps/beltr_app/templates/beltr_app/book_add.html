@@ -1,55 +1,95 @@
 <!DOCTYPE html>
 <html lang='en-US'>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Add a Book</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
-  </head>
-  <body>
-    {% if error %}
-      <h3 class="error">{{ error.error }}</h3>
-    {% endif %}
-    <div class="header">
-      <h1 id='addWelcome'>Add a new Book Title and Review</h1>
-      <a href="{% url 'home_url' user.id %}">Home</a>
-      <a href="{% url 'logout' %}">Logout</a>
-    </div>
-    <div class="addBook" >
-      <form action="{% url 'add_book' user.id %}" method="post">
-        {% csrf_token %}
-        <label class="addBook" for="book_title">Book Title:</label>
-        <textarea name="book_title" rows="2" cols="60"></textarea>
-        <label class="addBook" for="author">Author:</label>
-        <label class="addBook" for="author">Choose from the list:</label>
-        <select class="authors" name="authorid">
+    <link rel="stylesheet" href="{% static 'beltr_app/css/main.css' %}" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://use.typekit.net/atw5lys.css">
+    <script src="https://use.typekit.net/mcg1kfo.js"></script>
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'atw5lys',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+</head>
+
+<body>
+    <header>
+        {% if error %}
+        <h3 class="error">{{ error.error }}</h3>
+        {% endif %}
+        <div class="headerMessage">
+            <h1 id='addWelcome'>Create a New Book Review!</h1>
+            <a href="{% url 'home_url' user.id %}">Home</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </header>
+    <div class="newBook">
+        <h2>New Book Review:</h2>
+        <div class="addBook">
+            <form action="{% url 'add_book' user.id %}" method="post">
+                {% csrf_token %}
+                <label class="addBook" for="book_title">Book Title:</label>
+                <textarea name="book_title" rows="2" cols="60"></textarea>
+                <label class="addBook" for="author">Author:</label>
+                <label class="addBook" for="author">Choose from the list:</label>
+                <select class="authors" name="authorid">
           {% for author in authors %}
             <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
           {% endfor %}
         </select>
-        <label class="addBook" for="orauthor">Or add a new author:</label>
-        <textarea name="or_author_first" rows="2" cols="20"></textarea>
-        <textarea name="or_author_last" rows="2" cols="20"></textarea>
-        <label class="addBook" for="review">Review:</label>
-        <textarea name="review" rows="6" cols="60"></textarea>
-      </div>
-      <label id="rating" for="star_rating">Rating:</label>
-      <div class="stars">
-        <fieldset class="rating">
-            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-            <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-            <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-            <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-            <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-            <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-        </fieldset>
-      </div>
+                <label class="addBook" for="orauthor">Or add a new author:</label>
+                <textarea name="or_author_first" rows="2" cols="20"></textarea>
+                <textarea name="or_author_last" rows="2" cols="20"></textarea>
+                <label class="addBook" for="review">Review:</label>
+                <textarea name="review" rows="6" cols="60"></textarea>
+        </div>
+        <label id="rating" for="star_rating">Rating:</label>
+        <div class="stars">
+            <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                <input type="radio" id="starhalf" name="rating" value=".5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+            </fieldset>
+        </div>
         <br>
-        <input id='addSubmit' type="submit" value="Add Book and Review">
-      </form>
-  </body>
+        <input class='submit' type="submit" value="Submit Review">
+        </form>
+    </div>
+</body>
+
 </html>

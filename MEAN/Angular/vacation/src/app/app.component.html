@@ -1,0 +1,32 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+        {{title}}!
+    </h1>
+
+    <router-outlet></router-outlet>
+    <div class="header">
+        <nav>
+            <div class="verticalLine">
+                <a id="status" [routerLink]="['/']">Home</a>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="bannerContainer">
+    <h2>Choose Your Destination (Click the image below to view pictures from that island!)</h2>
+    <div class="oahu">
+        <a [routerLink]="['/main']"><img class="banner" src="./assets/52137.jpg">
+            <div class="title">
+                <h2>View Pictures from Oahu</h2>
+            </div>
+        </a>
+    </div>
+    <div class="bigIsland">
+        <a id="status" [routerLink]="['/big']"><img class="banner" src="./assets/51408.jpg">
+            <div class="title">
+                <h2>View Pictures from The Big Island</h2>
+            </div>
+        </a>
+    </div>
+</div>
