@@ -20,7 +20,7 @@
       });
       $("#submit").click(function(){
         var cityName = $("input").val();
-        var applid = "&appid=c4922202c27e63e5dc93bd0bab6b8b2f";
+        var applid = ;
         $.get("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + applid, function(info){
           var temp = info.main.temp;
           temp = kToFahernheit(temp);
